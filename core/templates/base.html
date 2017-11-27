@@ -71,7 +71,7 @@
               <ul class="gn-menu">
                 <li class="gn-search-item">
                   <input placeholder="Buscar arte" type="search" class="gn-search">
-                  <a class="gn-icon gn-icon-search"><span>Buscar arte</span></a>
+                  <a class="gn-icon gn-icon-search" href="{% url 'resultadobuscar' %}"><span>Buscar arte</span></a>
                 </li>
                 <li>
                   <a class="gn-icon gn-icon-archive">Minhas Artes</a>
@@ -96,6 +96,7 @@
 <!--==========================
   Hero Section
 ============================-->
+  {% block conteudo %}
   <section id="hero">
     <div class="hero-container">
       <div class="wow fadeIn">
@@ -113,6 +114,7 @@
     </div>
   </section>
   
+  {% endblock %}
 <!--==========================
   Footer
 ============================--> 
