@@ -356,7 +356,9 @@ h1, h2, h3, h4, h5, h6 {
 .loginmodal-container h1 {
   text-align: center;
   color: #47525E;
-  font-size: 1.8em;
+  font-size: 2.0em;
+  font-weight: 700;
+  text-transform: uppercase;
   font-family: "Raleway", sans-serif;
 }
 
@@ -407,11 +409,11 @@ h1, h2, h3, h4, h5, h6 {
   /* border: 1px solid #3079ed; */
   border: 0px;
   color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
+  text-shadow: 0 2px rgba(0,0,0,0.1); 
+  background-color: #B30206;
   padding: 17px 0px;
   font-family: roboto;
-  font-size: 14px;
+  font-size: 20px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
@@ -419,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
+  background-color: #800000;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
