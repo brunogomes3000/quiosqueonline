@@ -1,43 +1,43 @@
 {% extends "base.html" %}
 {% load static%}
 {% block titulo %}
-    Página Inicial | {{ block.super }}
-    {% endblock %}
+Página Inicial | {{ block.super }}
+{% endblock %}
 {% block conteudo %}
 <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="{% static '/img/logo.png' %}" alt="Quiosque" width="300px">
-        </div>
-        
-        <h1>Bem vindo ao QUIOSQUE ONLINE</h1>
-        <h2>Faça seu cadastro ou LOGIN</h2>
-        <div class="actions">
-          <a href="#about" class="btn-get-started">FAZER CADASTRO</a>
-          <a href="#" class="btn-services" data-toggle="modal" data-target="#login-modal">LOGIN</a>
-        </div>
-      </div>
-    </div>
-</section>
-
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    	<div class="modal-dialog">
-			<div class="loginmodal-container">
-				<h1>
-				Faça login com sua conta
-				</h1>
-				<br>
-				<form>
-					<input type="text" name="user" placeholder="Username">
-					<a href="#">Esqueci a senha</a>
-					<input type="password" name="pass" placeholder="Password">
-					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
-				</form>
-				<div class="login-help">
-					<a href="#">Registrar-se</a>
-				</div>
+	<div class="hero-container">
+		<div class="wow fadeIn">
+			<div class="hero-logo">
+				<img class="" src="{% static '/img/logo.png' %}" alt="Quiosque" width="300px">
+			</div>
+			
+			<h1>Bem vindo ao QUIOSQUE ONLINE</h1>
+			<h2>Faça seu cadastro ou LOGIN</h2>
+			<div class="actions">
+				<a href="#about" class="btn-get-started">FAZER CADASTRO</a>
+				<a href="#" class="btn-services" data-toggle="modal" data-target="#login-modal">LOGIN</a>
 			</div>
 		</div>
 	</div>
+</section>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>
+				Faça login com sua conta
+			</h1>
+			<br>
+			<form>
+				<input type="text" name="user" placeholder="Username">
+				<a href="#">Esqueci a senha</a>
+				<input type="password" name="pass" placeholder="Password">
+				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+			</form>
+			<div class="login-help">
+				<a href="#">Registrar-se</a>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
