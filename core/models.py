@@ -24,13 +24,14 @@ class Arte(models.Model):
 
 
 class Imagens(models.Model):
-    dataImagem = models.DateTimeField("Data da imagem", auto_now_add=True)
-    descricao = models.CharField("Descrição", max_length=100, null=True)
-    idArte = models.ForeignKey(Arte, on_delete=models.CASCADE, null=True)
+	imagem = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
+	dataImagem = models.DateTimeField("Data da imagem", auto_now_add=True)
+	descricao = models.CharField("Descrição", max_length=100, null=True)
+	idArte = models.ForeignKey(Arte, on_delete=models.CASCADE, null=True)
 
-    def __str__(self):
-    	return self.descricao
+	def __str__(self):
+		return self.descricao
 
-    class Meta:
-        verbose_name = 'Imagem'
-        verbose_name_plural = 'Imagens'
+	class Meta:
+		verbose_name = 'Imagem'
+		verbose_name_plural = 'Imagens'
