@@ -1,38 +1,53 @@
 {% extends "base.html" %}
+{% load static%}
+{% block titulo %}
+Página Inicial | {{ block.super }}
+{% endblock %}
 {% block conteudo %}
 <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="static/img/logo.png" alt="Quiosque" width="300px">
-        </div>
-        
-        <h1>Bem vindo ao QUIOSQUE ONLINE</h1>
-        <h2>Faça seu cadastro ou LOGIN</h2>
-        <div class="actions">
-          <a href="#about" class="btn-get-started">FAZER CADASTRO</a>
-          <a href="#" class="btn-services" data-toggle="modal" data-target="#login-modal">LOGIN</a>
-        </div>
-      </div>
-    </div>
- 	
- 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    	<div class="modal-dialog">
-			<div class="loginmodal-container">
-				<h1>
-				Faça login com sua conta
-				</h1>
-				<br>
-				<form>
-					<input type="text" name="user" placeholder="Username">
-					<input type="password" name="pass" placeholder="Password">
-					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
-				</form>
-				<div class="login-help">
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
-				</div>
+	<div class="hero-container">
+		<div class="wow fadeIn">
+			<div class="hero-logo">
+				<img class="" src="{% static '/img/logo.png' %}" alt="Quiosque" width="300px">
+			</div>
+			
+			<h1>Bem vindo ao QUIOSQUE ONLINE</h1>
+			<h2>Faça seu cadastro ou LOGIN</h2>
+			<div class="actions">
+				<a href="#about" class="btn-get-started">FAZER CADASTRO</a>
+				<a href="#" class="btn-services" data-toggle="modal" data-target="#login-modal">LOGIN</a>
 			</div>
 		</div>
 	</div>
 </section>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>
+				Faça login com sua conta
+			</h1>
+			<br>
+			<form>
+				<input type="text" name="user" placeholder="Username">
+				<a href="#">Esqueci a senha</a>
+				<input type="password" name="pass" placeholder="Password">
+				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+			</form>
+			<div class="login-help">
+			<form>
+				<a href="#"> Registrar-se </a>
+				<input type="text" name="first_name" placeholder="First Name">
+				<input type="text" name="last_name" placeholder="Last Name">
+				<input type="text" name="address" placeholder="Address">
+				<input type="text" name="cpf"  placeholder="CPF">
+				<input type="text" name="email" placeholder="Email">
+				<input type="password" name="pass" placeholder="Password">
+				<input type="password" name="confirm_pass" placeholder="Confirm Password">
+				<input type="submit" name="register" class="login loginmodal-submit" value="Register">
+			</form>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
