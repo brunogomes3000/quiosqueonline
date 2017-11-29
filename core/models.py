@@ -5,5 +5,7 @@ class Usuario(models.Model):
 	senha= models.CharField('Senha', max_length=16)
 	cpfCpnj= models.CharField('CPF', max_length=11)
 	
+	
 	def __str__(self):
 		return self.email
+
