@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
-
 # Create your views here.
 def index(request):
+	
 	return render(request, 'index.html')
 
 def resultadobuscar(request):
@@ -14,5 +14,5 @@ def resultadobuscar(request):
 	return render(request, 'ResultadoBuscar.html')
 
 def arte_detalhes(request):
-	return render(request,'arte_detalhes.html')
+		return render(request,'arte_detalhes.html')
 
