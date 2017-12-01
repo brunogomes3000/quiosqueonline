@@ -11,9 +11,10 @@ Detalhe da Arte | {{ block.super }}
 <div class="container">​
     <div class="row mt">
 ​​    </div><!-- col-lg-8 -->​​
-​	<div class="col-lg-4">
-	<img src="arte.png" width="80%" height="80%"><br/><br/>​
-	</div>
+​   <div class="col-lg-4">
+    <img src="arte.png" width="80%" height="80%"><br/><br/>​
+    </div>
+
         <div class="col-lg-8">
         <h1>Nome da Arte</h1>
         <hr>
@@ -29,7 +30,14 @@ Detalhe da Arte | {{ block.super }}
 ​</div>
 </div>
 </div>
-​​
+​​{% for A1 in Artes %}
+ 
+ {{ A1.descricao }}
+ {{ A1.dataCadastro }}
+ {{ A1.email }}
+
+
+{% endfor %}
     
 
 ​{% endblock %}

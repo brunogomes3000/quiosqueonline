@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Arte
 
 # Create your views here.
 def index(request):
@@ -6,12 +7,12 @@ def index(request):
 	return render(request, 'index.html')
 
 def resultadobuscar(request):
-	if request.method == 'GET':
-		if 'nomeget' in request.GET: 
-			nomeget=request.GET.get("nomeget")
-		else: nomeget="Arte não encontrada"
+	Artes = Arte.objects.all()
+	context = {
+	'Artes': Artes
+	}
 
-	return render(request, 'ResultadoBuscar.html')
+	return render(request, 'ResultadoBuscar.html', context) 
 
 def arte_detalhes(request):
 		return render(request,'arte_detalhes.html')

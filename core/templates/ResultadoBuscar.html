@@ -2,6 +2,10 @@
 {% load static %}
 
 
+{% block titulo %}
+Resultado da Busca | {{ block.super }}
+{% endblock %}
+
 
 {% block conteudo %}
 
@@ -10,15 +14,29 @@
 <div class="container">
 <br>
 	<br>
-​		<h3><p>Resultado da Pesquisa para: <> palavra chave <> </p></h3>
+​		<h3><b><p>Resultado da Pesquisa para: <b></p></h3>
 	</br>
-​		<form method="get" action="">
-			<p> Filtra por Nome: <input type="text" name="nomeget"/>
+​		<form method="get" action="{% url 'resultadobuscar' %}">
+			<b><p> Filtra por Nome: <input type="text" name="nomeget"/></b>
+			</br>
+			
+{% for A1 in Artes %}
+		<div class="container">
+ 		<div class="col-lg-8">
+        <h3><b>Nome da Arte:</b></h3>
+        <h1>{{ A1.descricao }}<h1>
+        <hr>
+        <h3><b>Data de Cadastro;</b></h3>
+        <h1>{{ A1.dataCadastro }}</h1>
+        <br>
+        <h3><b>E-Mail:</b></h3>
+        <h1>{{ A1.email }}</h1>
+        <br>
 
+{% endfor %}
 </div>
 
-	</br>
-
+</div>
 
 
 {% endblock %}
