@@ -15,5 +15,7 @@ def resultadobuscar(request):
 	return render(request, 'ResultadoBuscar.html', context) 
 
 def arte_detalhes(request):
-		return render(request,'arte_detalhes.html')
+	return render(request,'arte_detalhes.html')
 
+def gerenciararte(request):
+	return render(request, 'gerenciararte.html')

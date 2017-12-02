@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static%}
+
+{% block titulo %}
+Minhas Artes | {{ block.super }}
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+	<form>
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="Arte">Arte</label>
+				<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome da arte">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Descrição</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+</div>
+{% endblock %}
