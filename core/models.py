@@ -2,12 +2,14 @@ from django.db import models
 
 
 class Usuario(models.Model):
+    nome = models.CharField('Nome', max_length=15)
+    sobrenome = models.CharField('Sobrenome', max_length=15)
     email = models.CharField('E-mail', primary_key=True, max_length=30)
     senha = models.CharField('Senha', max_length=16, null=True)
     cpfCpnj = models.CharField('CPF', max_length=11, null=True)
 
     def __str__(self):
-        return self.email
+        return self.emailnome
 
 
 class Arte(models.Model):
@@ -24,14 +26,15 @@ class Arte(models.Model):
 
 
 class Imagens(models.Model):
-	imagem = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
-	dataImagem = models.DateTimeField("Data da imagem", auto_now_add=True)
-	descricao = models.CharField("Descrição", max_length=100, null=True)
-	idArte = models.ForeignKey(Arte, on_delete=models.CASCADE, null=True)
+    imagem = models.ImageField(
+        upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
+    dataImagem = models.DateTimeField("Data da imagem", auto_now_add=True)
+    descricao = models.CharField("Descrição", max_length=100, null=True)
+    idArte = models.ForeignKey(Arte, on_delete=models.CASCADE, null=True)
 
-	def __str__(self):
-		return self.descricao
+    def __str__(self):
+        return self.descricao
 
-	class Meta:
-		verbose_name = 'Imagem'
-		verbose_name_plural = 'Imagens'
+    class Meta:
+        verbose_name = 'Imagem'
+        verbose_name_plural = 'Imagens'
