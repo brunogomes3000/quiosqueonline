@@ -21,6 +21,7 @@ def arte_detalhes(request):
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
+	
 	context = {
 		'artes': artes,
 	}
