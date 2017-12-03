@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Arte
+from .models import Usuario
+from .models import Imagens
 
 # Create your views here.
 def index(request):
@@ -18,4 +20,8 @@ def arte_detalhes(request):
 	return render(request,'arte_detalhes.html')
 
 def gerenciararte(request):
-	return render(request, 'gerenciararte.html')
+	artes = Arte.objects.all()
+	context = {
+		'artes': artes,
+	}
+	return render(request, 'gerenciararte.html', context)
