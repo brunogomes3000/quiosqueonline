@@ -6,14 +6,30 @@ Minhas Artes | {{ block.super }}
 {% endblock %}
 
 {% block conteudo %}
+
 <div class="container">
 
 	<div class="row mt">
-		<h1>Bem-vindo</h1>
-		<div class="col-md-3"></div>
+		<h1>Bem-vindo, {{usuario.nome}}</h1>
+		
+		<form method="get" action="{% url 'gerenciararte' %}">	
+			<div class="form-group">
+				<input type="text" name="nomeget" placeholder="Buscar">
+				<button type="submit">Buscar</button>
+			</div>
+		</form>
+		</div>
 		{% for arte in artes %}
 		<div class="col-md-3">
-			<img class="img-responsive" src="{{imagens.imagem.url}}" alt="{{imagens.id}}">
+			{% for img in imagens%}
+
+
+				{% if arte.id == img.idArte.id %}
+
+			<img class="img-responsive" src="{{img.imagem.url}}" alt="">
+				{% endif %}
+
+			{% endfor %}
 			<h3>{{arte.descricao}}</h3>
 			<button><i class="fa fa-trash"></i> excluir Arte</button>
 			<br/>
@@ -25,4 +41,5 @@ Minhas Artes | {{ block.super }}
 
 	</div>
 </div>
+
 {% endblock %}
