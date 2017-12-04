@@ -21,8 +21,12 @@ def arte_detalhes(request):
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
-	
+	imagens = Imagens.objects.all()
+	usuario = Usuario.objects.all()
 	context = {
 		'artes': artes,
+		'imagens':imagens,
+		'usuario': usuario,
+
 	}
 	return render(request, 'gerenciararte.html', context)

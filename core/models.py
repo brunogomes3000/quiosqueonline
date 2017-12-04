@@ -9,7 +9,7 @@ class Usuario(models.Model):
     cpfCpnj = models.CharField('CPF', max_length=11, null=True)
 
     def __str__(self):
-        return self.emailnome
+        return self.nome
 
 
 class Arte(models.Model):
