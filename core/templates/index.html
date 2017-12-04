@@ -14,7 +14,7 @@ Página Inicial | {{ block.super }}
 			<h1>Bem vindo ao QUIOSQUE ONLINE</h1>
 			<h2>Faça seu cadastro ou LOGIN</h2>
 			<div class="actions">
-				<a href="#about" class="btn-get-started">FAZER CADASTRO</a>
+				<a href="#" class="btn-get-started" data-toggle="modal" data-target="#register-modal">FAZER CADASTRO</a>
 				<a href="#" class="btn-services" data-toggle="modal" data-target="#login-modal">LOGIN</a>
 			</div>
 		</div>
@@ -35,8 +35,20 @@ Página Inicial | {{ block.super }}
 				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
 			</form>
 			<div class="login-help">
+				<a href="#" data-toggle="modal" data-target="#register-modal"> Registrar-se </a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>
+				Crie sua conta
+			</h1>
+			<br>
 			<form>
-				<a href="#"> Registrar-se </a>
 				<input type="text" name="first_name" placeholder="First Name">
 				<input type="text" name="last_name" placeholder="Last Name">
 				<input type="text" name="address" placeholder="Address">
@@ -46,10 +58,16 @@ Página Inicial | {{ block.super }}
 				<input type="password" name="confirm_pass" placeholder="Confirm Password">
 				<input type="submit" name="register" class="login loginmodal-submit" value="Register">
 			</form>
+			<div class="login-help">
+				<a href="#"> Registrar-se </a>
 			</div>
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 
 
 {% endblock %}
+=======
+{% endblock %}
+>>>>>>> 09264078a7500139be88e737d6ed530f88f38d7b
