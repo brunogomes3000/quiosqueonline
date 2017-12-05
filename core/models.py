@@ -2,16 +2,15 @@ from django.db import models
 
 
 class Usuario(models.Model):
+    nome = models.CharField('Nome', max_length=15, null=True)
+    sobrenome = models.CharField('Sobrenome', max_length=15, null=True)
     email = models.CharField('E-mail', primary_key=True, max_length=30)
     senha = models.CharField('Senha', max_length=16, null=True)
     cpfCpnj = models.CharField('CPF', max_length=11, null=True)
 
     def __str__(self):
-<<<<<<< HEAD
-        return self.email
-=======
         return self.nome
->>>>>>> 06bfc7ed1bb96cb0aeaf88bc6fd7a03451fab110
+
 
 
 class Arte(models.Model):
