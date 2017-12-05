@@ -9,13 +9,8 @@ class Usuario(models.Model):
     cpfCpnj = models.CharField('CPF', max_length=11, null=True)
 
     def __str__(self):
-<<<<<<< HEAD
 
         return self.nome
-=======
-        return self.nome
-
->>>>>>> 8ce866699970e4e930f042e13cc3e15e7de795f7
 
 
 class Arte(models.Model):
@@ -42,8 +37,5 @@ class Imagens(models.Model):
 
 	class Meta:
 		verbose_name = 'Imagem'
-<<<<<<< HEAD
 		verbose_name_plural = 'Imagens'
-=======
-		verbose_name_plural = 'Imagens'
->>>>>>> 8ce866699970e4e930f042e13cc3e15e7de795f7
+
