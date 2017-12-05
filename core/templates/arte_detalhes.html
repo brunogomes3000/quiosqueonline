@@ -14,30 +14,23 @@ Detalhe da Arte | {{ block.super }}
 ​   <div class="col-lg-4">
     <img src="arte.png" width="80%" height="80%"><br/><br/>​
     </div>
-
+{% for A1 in Artes %}
+        <div class="container">
         <div class="col-lg-8">
-        <h1>Nome da Arte</h1>
+        <h3><b>Nome da Arte:</b></h3>
+        <h1>{{ A1.descricao }}<h1>
         <hr>
-        <h3><b>DESCRIÇÃO</b></h3>
-        <p>Descrição da Arte.</p>
+        <h3><b>Data de Cadastro;</b></h3>
+        <h1>{{ A1.dataCadastro }}</h1>
         <br>
-        <h3><b>AUTOR</b></h3>
-        <p>Nome</p>
-        <p>Perfil</p>
+        <h3><b>E-Mail:</b></h3>
+        <h1>{{ A1.email }}</h1>
         <br>
-        
-       
+
+{% endfor %}
 ​</div>
 </div>
 </div>
-​​{% for A1 in Artes %}
- 
- {{ A1.descricao }}
- {{ A1.dataCadastro }}
- {{ A1.email }}
-
-
-{% endfor %}
-    
+​​
 
 ​{% endblock %}
