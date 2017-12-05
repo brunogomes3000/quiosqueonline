@@ -10,10 +10,7 @@ def index(request):
 	return render(request, 'index.html')
 
 def resultadobuscar(request):
-	#id_Artes = request.GET.get("id")
-	#Artes = Arte.objects.get(id=id_Artes)
-	#Artes = Arte.objects.all()
-
+	
 	if request.method == 'GET':
 		if 'nomeget' in request.GET:
 			nomeget=request.GET.get("nomeget")
@@ -36,8 +33,6 @@ def arte_detalhes(request):
 	'Artes': Artes
 	}
 	return render(request,'arte_detalhes.html', context)
-
-	return render(request,'arte_detalhes.html')
 
 
 def gerenciararte(request):
