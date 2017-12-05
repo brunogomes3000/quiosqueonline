@@ -35,8 +35,6 @@ def arte_detalhes(request):
 	return render(request,'arte_detalhes.html', context)
 
 
-
-
 def gerenciararte(request):
 	artes = Arte.objects.all()
 	imagens = Imagens.objects.all()
