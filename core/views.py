@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Arte
 from .models import Usuario
 from .models import Imagens
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def index(request):
@@ -46,4 +47,6 @@ def gerenciararte(request):
 		'usuario': usuario,
 
 	}
+
 	return render(request, 'gerenciararte.html', context)
+
