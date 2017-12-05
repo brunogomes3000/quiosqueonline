@@ -29,15 +29,15 @@ def resultadobuscar(request):
 	return render(request, 'ResultadoBuscar.html', context) 
 
 def arte_detalhes(request):
-<<<<<<< HEAD
+
 	Artes = Arte.objects.all()
 	context = {
 	'Artes': Artes
 	}
 	return render(request,'arte_detalhes.html', context)
-=======
+
 	return render(request,'arte_detalhes.html')
->>>>>>> 09264078a7500139be88e737d6ed530f88f38d7b
+
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
