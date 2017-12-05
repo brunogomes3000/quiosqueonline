@@ -20,23 +20,19 @@ Resultado da Busca | {{ block.super }}
 			<b><p> Filtra por Nome: <input type="text" name="nomeget"/></b>
 			</br>
 			
-{% for A1 in Artes %}
-		<div class="container">
- 		<div class="col-lg-8">
-        <h3><b>Nome da Arte:</b></h3>
-        <h1>{{ A1.descricao }}<h1>
+
+{% for art in artes %}
+
+<div class="container">
+        <div class="col-lg-4">
         <hr>
-        <h3><b>Data de Cadastro;</b></h3>
-        <h1>{{ A1.dataCadastro }}</h1>
-        <br>
-        <h3><b>E-Mail:</b></h3>
-        <h1>{{ A1.email }}</h1>
-        <br>
+        <p><h1>{{art.descricao}}</h1></p>
+        <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" >Saiba Mais</a>
+        <hr>
+</div>
+</div>
+</div>
 
 {% endfor %}
-</div>
-
-</div>
-
 
 {% endblock %}
