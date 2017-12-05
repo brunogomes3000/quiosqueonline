@@ -7,11 +7,8 @@ class Usuario(models.Model):
     cpfCpnj = models.CharField('CPF', max_length=11, null=True)
 
     def __str__(self):
-<<<<<<< HEAD
-        return self.email
-=======
+
         return self.nome
->>>>>>> 06bfc7ed1bb96cb0aeaf88bc6fd7a03451fab110
 
 
 class Arte(models.Model):
@@ -39,9 +36,3 @@ class Imagens(models.Model):
 	class Meta:
 		verbose_name = 'Imagem'
 		verbose_name_plural = 'Imagens'
-
-class email(models.user):
-    """docstring for email"""
-    def __init__(self, arg):
-        super(email, self).__init__()
-        self.arg = arg

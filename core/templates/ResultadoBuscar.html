@@ -26,6 +26,12 @@ Resultado da Busca | {{ block.super }}
 <div class="container">
         <div class="col-lg-4">
         <hr>
+        {% for img in imagens%}
+
+        {% if arte.id == img.idArte.id %}
+                <img class="img-responsive" src="{{img.imagem.url}}" alt="">
+        {% endif %}
+        {% endfor %}
         <p><h1>{{art.descricao}}</h1></p>
         <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" >Saiba Mais</a>
         <hr>

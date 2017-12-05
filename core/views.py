@@ -10,7 +10,7 @@ def index(request):
 	return render(request, 'index.html')
 
 def resultadobuscar(request):
-	
+	imagens = Imagens.objects.all()
 	if request.method == 'GET':
 		if 'nomeget' in request.GET:
 			nomeget=request.GET.get("nomeget")
@@ -19,9 +19,9 @@ def resultadobuscar(request):
 		artes =  Arte.objects.filter(descricao__icontains=nomeget)
 	else:
 		artes = Arte.objects.all()
-
 	context = {
-		'artes': artes
+		'artes': artes,
+		'imagens': imagens,
 	}
 
 	return render(request, 'ResultadoBuscar.html', context) 
