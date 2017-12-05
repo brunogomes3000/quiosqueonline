@@ -20,17 +20,17 @@ Resultado da Busca | {{ block.super }}
 			<b><p> Filtra por Nome: <input type="text" name="nomeget"/></b>
 			</br>
 			
-<div class="col-lg-4">
+
 {% for art in artes %}
 
-
-<!--<img class="img-responsive" src="{{art.imagem.url}}" alt=""> -->
-<p>{{art.descricao}}</p>
-
-<h3><a href=" {% url 'arte_detalhes' %}?id={{art.id}}">Link</a></h3>
+<div class="container">
+        <div class="col-lg-4">
+        <hr>
+        <p><h1>{{art.descricao}}</h1></p>
+        <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" >Saiba Mais</a>
+        <hr>
 </div>
 </div>
-
 </div>
 
 {% endfor %}
