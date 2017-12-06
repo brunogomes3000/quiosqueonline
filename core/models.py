@@ -17,6 +17,7 @@ class Arte(models.Model):
     descricao = models.CharField("Descrição", max_length=100, null=True)
     dataCadastro = models.DateField('Data de cadastro', auto_now_add=True)
     email = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
+    imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
 
     def __str__(self):
         return self.descricao

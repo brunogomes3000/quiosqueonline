@@ -15,7 +15,7 @@ Resultado da Busca | {{ block.super }}
 
 	<br><h3><b><p> Resultado da Pesquisa para: </p></b></h3></br>
          <br>
-          <form method="get" action="{% url 'resultadobuscar' %}"></form>      
+          <form method="get" action="{% url 'resultadobuscar' %}">      
 	    <b><p> Filtra por Nome: <input type="text" name="nomeget"/></p></b>
 	 </br>
 
@@ -25,6 +25,7 @@ Resultado da Busca | {{ block.super }}
 
 <div class="container">
         <hr>
+        <img class="img-responsive" src="{{art.imagem_principal.url}}" alt="" width="300" />
                 <p><h1>{{art.descricao}}</h1></p>
                 <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" > Detalhes</a>
         </hr>
