@@ -12,32 +12,24 @@ Resultado da Busca | {{ block.super }}
 
 
 <div class="container">
-<br>
-	<br>
-​		<h3><b><p>Resultado da Pesquisa para: <b></p></h3>
-	</br>
-​		<form method="get" action="{% url 'resultadobuscar' %}">
-			<b><p> Filtra por Nome: <input type="text" name="nomeget"/></b>
-			</br>
-			
+
+	<br><h3><b><p> Resultado da Pesquisa para: </p></b></h3></br>
+         <br>
+          <form method="get" action="{% url 'resultadobuscar' %}"></form>      
+	    <b><p> Filtra por Nome: <input type="text" name="nomeget"/></p></b>
+	 </br>
+
+</div>	
 
 {% for art in artes %}
 
 <div class="container">
-        <div class="col-lg-4">
         <hr>
-        {% for img in imagens%}
+                <p><h1>{{art.descricao}}</h1></p>
+                <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" > Detalhes</a>
+        </hr>
+</div>
 
-        {% if arte.id == img.idArte.id %}
-                <img class="img-responsive" src="{{img.imagem.url}}" alt="">
-        {% endif %}
-        {% endfor %}
-        <p><h1>{{art.descricao}}</h1></p>
-        <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" >Saiba Mais</a>
-        <hr>
-</div>
-</div>
-</div>
 
 {% endfor %}
 
