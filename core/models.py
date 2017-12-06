@@ -12,13 +12,23 @@ class Usuario(models.Model):
 
         return self.nome
 
+class Categoria(models.Model):
+    categoria = models.CharField("Categoria da arte", max_length=20, null=True)
+
+    def __str__(self):
+        return self.categoria
+
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+
 class Arte(models.Model):
     descricao = models.CharField("Descrição", max_length=100, null=True)
     dataCadastro = models.DateField('Data de cadastro', auto_now_add=True)
     email = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
-    #preco = models.FloatField("Preço", null=True)
+    preco = models.FloatField("Preço", null=True)
     imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
-
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.descricao
