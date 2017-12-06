@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %}
+Meu carrinho | {{ block.super }}
+{% endblock %}
+
+<div class="container">​
+    <div class="row mt">
+​​   
+{% for A1 in Artes %}
+    <div class="container">
+        <div class="col-lg-8">
+
+           <hr><h3><b>Nome da Arte:</b></h3><h1>{{ A1.descricao }}</h1></hr>
+             <hr><h3><b>Preço:</b></h3><h1>{{ A1.preco }}</h1></hr>
+        </div>
+    </div>
+
+    total += A1.preco
+{% endfor %}
+
+<div class="container">
+	<div class="row mt">
+        <div class="col-lg-8">
+
+             <right><hr><h3><b>Total:</b></h3><h1>{{ total }}</h1></hr></right>
+        </div>
+    </div>
+</div>
+<--adicionar um botão de finalizar compra-->
+    ​</div>
+</div>
+​​
+
+​{% endblock %}
+
+<--falta configurar urls.py e views.py-->

@@ -48,3 +48,11 @@ def gerenciararte(request):
 
 	return render(request, 'gerenciararte.html', context)
 
+def carrinho(request):
+
+	#puxar os produtos da sessão
+	#consultar todos os produtos no banco
+	#somar os valores de cada produto e salvar em uma variávei
+	#jogar em contexto os produtos e o valor total
+	return render(request, 'carrinho.html')
+
