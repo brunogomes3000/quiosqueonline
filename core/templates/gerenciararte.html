@@ -21,15 +21,10 @@ Minhas Artes | {{ block.super }}
 		</div>
 		{% for arte in artes %}
 		<div class="col-md-3">
-			{% for img in imagens%}
-			
 
-				{% if arte.id == img.idArte.id %}
 
-			<img class="img-responsive" src="{{img.imagem.url}}" alt="">
-				{% endif %}
+			<img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" />
 
-			{% endfor %}
 			<h3>{{arte.descricao}}</h3>
 			<button><i class="fa fa-trash"></i> excluir Arte</button>
 			<br/>
