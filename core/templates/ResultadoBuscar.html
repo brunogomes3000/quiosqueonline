@@ -14,24 +14,39 @@ Resultado da Busca | {{ block.super }}
 <div class="container">
 
 	<br><h3><b><p> Resultado da Pesquisa para: </p></b></h3></br>
-         <br>
-          <form method="get" action="{% url 'resultadobuscar' %}">      
-	    <b><p> Filtra por Nome: <input type="text" name="nomeget"/></p></b>
-	 </br>
+        <br>
+        <form method="get" action="{% url 'resultadobuscar' %}">      
+           <b><p> Filtra por Nome: <input type="text" name="nomeget"/></p></b>
+   </br>
 
 </div>	
 
-{% for art in artes %}
+<div class="row mt">
+        
+        {% for arte in artes %}
 
-<div class="container">
-        <hr>
-        <img class="img-responsive" src="{{art.imagem_principal.url}}" alt="" width="300" />
-                <p><h1>{{art.descricao}}</h1></p>
-                <a href=" {% url 'arte_detalhes' %}?id={{art.id}}" > Detalhes</a>
-        </hr>
+        <div class="col-md-3">
+
+
+                <img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" />
+
+                <h3>{{arte.descricao}}</h3>
+
+        </div>
+        {% empty %}
+        <div class="container">
+         
+                <h1>Nenhuma arte cadastrada</h1>
+                
+        </div>
+        {% endfor %}
+
 </div>
 
 
-{% endfor %}
+
+
+
+
 
 {% endblock %}
