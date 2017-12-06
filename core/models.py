@@ -17,7 +17,11 @@ class Arte(models.Model):
     descricao = models.CharField("Descrição", max_length=100, null=True)
     dataCadastro = models.DateField('Data de cadastro', auto_now_add=True)
     email = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
+<<<<<<< HEAD
+    preco = models.FloatField("Preço", null=True)
+=======
     imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
+>>>>>>> ac756342db0e8cad719878a6fa0c263229600953
 
     def __str__(self):
         return self.descricao
@@ -39,4 +43,3 @@ class Imagens(models.Model):
 	class Meta:
 		verbose_name = 'Imagem'
 		verbose_name_plural = 'Imagens'
-
