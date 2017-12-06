@@ -205,10 +205,11 @@ input.gn-search:focus {
 }
 
 .gn-menu-main a.gn-icon-search {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 60px;
+		display: block;
+		float: left;
+		height: 100%;
+		border-right: 1px solid #c6d0da;
+		text-align: center;
 }
 
 .gn-icon::before {

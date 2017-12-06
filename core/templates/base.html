@@ -71,15 +71,14 @@
       <ul id="gn-menu" class="gn-menu-main">
         <li class="gn-trigger">
          <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-         <li><img class="" src="{% static 'img/logo.png' %}" alt="Quiosque" width="100px"></li>
+         
          <nav class="gn-menu-wrapper">
           <div class="gn-scroller">
             <ul class="gn-menu">
-              <li class="gn-search-item">
-                <!--<input placeholder="Buscar arte" type="search" class="gn-search">-->
+              <li>
                 <a class="gn-icon gn-icon-search" href="{% url 'resultadobuscar' %}">Buscar arte</a>
               </li>
-            </br>
+              <br/>
             <li>
               <a class="gn-icon gn-icon-archive" href="{% url 'gerenciararte' %}">Minhas Artes</a>
             </li>

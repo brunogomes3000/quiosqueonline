@@ -8,25 +8,24 @@ Detalhe da Arte | {{ block.super }}
 {% block conteudo %}
 
 
+
 <div class="container">​
     <div class="row mt">
         ​​   
-        {% for A1 in Artes %}
         <div class="container">
             <div class="col-lg-8">
-             <img class="img-responsive" src="{{A1.imagem_principal.url}}" alt="" width="300"/>
-             <hr><h3><b>Nome da Arte:</b></h3><h1>{{ A1.descricao }}</h1></hr>
-             <hr><h3><b>Data de Cadastro:</b></h3><h1>{{ A1.dataCadastro }}</h1></hr>
-             <hr><h3><b>Autor:</b></h3><h1>{{ A1.email }}</h1></hr>
+             <img class="img-responsive" src="{{Artes.imagem_principal.url}}" alt="" width="300"/>
+             <hr><h3><b>Nome da Arte:</b></h3><h1>{{ Artes.descricao }}</h1></hr>
+             <hr><h3><b>Data de Cadastro:</b></h3><h1>{{ Artes.dataCadastro }}</h1></hr>
+             <hr><h3><b>Autor:</b></h3><h1>{{ Artes.email }}</h1></hr>
          </div>
      </div>
 
 
-     {% endfor %}
 
 
      ​</div>
  </div>
  ​​
 
- ​{% endblock %}
+​{% endblock %}

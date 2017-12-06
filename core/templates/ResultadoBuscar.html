@@ -10,17 +10,16 @@ Resultado da Busca | {{ block.super }}
 {% block conteudo %}
 
 
-
 <div class="container">
 
-	<br><h3><b><p> Resultado da Pesquisa para: </p></b></h3></br>
+        <br><h3><b><p> Resultado da Pesquisa para: </p></b></h3></br>
         <br>
         <form method="get" action="{% url 'resultadobuscar' %}">      
-           <b><p> Filtra por Nome: <input type="text" name="nomeget"/></p></b>
+           <b><p> Buscar por nome: <input type="text" name="nomeget"/></p></b>
    </br>
 
-</div>	
-
+</div>  
+<div class="container">
 <div class="row mt">
         
         {% for arte in artes %}
@@ -32,16 +31,18 @@ Resultado da Busca | {{ block.super }}
 
                 <h3>{{arte.descricao}}</h3>
 
+                <p><a href="{% url 'arte_detalhes' %}?id={{arte.id }}"> Detalhes</a></p>
         </div>
         {% empty %}
-        <div class="container">
+        
          
                 <h1>Nenhuma arte cadastrada</h1>
                 
-        </div>
+        
         {% endfor %}
-
 </div>
+</div>
+
 
 
 

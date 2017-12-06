@@ -27,8 +27,8 @@ def resultadobuscar(request):
 	return render(request, 'ResultadoBuscar.html', context) 
 
 def arte_detalhes(request):
-
-	Artes = Arte.objects.all()
+	id_arte = request.GET.get("id")
+	Artes = Arte.objects.get(id = id_arte)
 	context = {
 	'Artes': Artes
 	}
