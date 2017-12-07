@@ -69,3 +69,6 @@ def carrinho(request):
 	#jogar em contexto os produtos e o valor total
 	return render(request, 'carrinho.html')
 
+def dados_pessoais(request):
+	return render(request, 'dados_pessoais.html')
+

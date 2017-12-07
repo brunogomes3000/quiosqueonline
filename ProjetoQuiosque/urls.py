@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^resultadobuscar/$', views.resultadobuscar, name="resultadobuscar"),
     url(r'^arte_detalhes/$',views.arte_detalhes,name="arte_detalhes"),
     url(r'^gerenciararte/$',views.gerenciararte,name="gerenciararte"),
+    url(r'^dados_pessoais/$',views.dados_pessoais,name="dados_pessoais"),
     url(r'^admin/', admin.site.urls),
 ]
 
