@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Arte
 from .models import Usuario
 from .models import Imagens
+from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -10,16 +11,28 @@ def index(request):
 	return render(request, 'index.html')
 
 def resultadobuscar(request):
+	categoria = Categoria.objects.all()
 	imagens = Imagens.objects.all()
 	if request.method == 'GET':
 		if 'nomeget' in request.GET:
 			nomeget=request.GET.get("nomeget")
-		else: 
+		else:
 			nomeget=""
+		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="":
+			categoriaget=request.GET.get("categoriaget")
+		else:
+			categoriaget=Categoria.objects.values_list('id')
+
+		if 'dataCadastroget' in request.GET and request.GET.get("dataCadastroget")!="":
+			dataCadastroget=request.GET.get("dataCadastroget")
+		else:
+			dataCadastroget= Arte.objects.values_list('id')
+
 		artes =  Arte.objects.filter(descricao__icontains=nomeget)
 	else:
 		artes = Arte.objects.all()
 	context = {
+		'categoria': categoria,
 		'artes': artes,
 		'imagens': imagens,
 	}
