@@ -12,8 +12,8 @@ Detalhe da Arte | {{ block.super }}
 <div class="container">​
     <div class="row mt">
         <!-- Para concluir, conferir site da gearbest -->
-        <legend>Dados Pessoais<a href="{% url 'edit_dados_pessoais' %}"> Edit</a></legend>
-        <ul>
+        <legend><a class="editar" href="{% url 'edit_dados_pessoais' %}">Editar</a>Dados Pessoais</legend>
+        <ul class="dados_pessoais">
             <li><strong>Nome</strong>: </li>
             <li><strong>CPF</strong>: </li>
             <li><strong>Telefone</strong>: </li>

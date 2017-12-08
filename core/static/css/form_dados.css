@@ -1,0 +1,13 @@
+ul.dados_pessoais {
+	list-style: none;
+	margin-top: 30px;
+	margin-bottom: 20px
+}
+
+li {
+	margin-bottom: 10px
+}
+
+a.editar {
+	float: right;
+}
