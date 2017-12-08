@@ -11,15 +11,31 @@ Detalhe da Arte | {{ block.super }}
 <hr/>
 <div class="container">​
     <div class="row mt">
-        <!-- Para concluir, conferir site da gearbest -->
+
+
         <legend><a class="editar" href="{% url 'edit_dados_pessoais' %}">Editar</a>Dados Pessoais</legend>
+        <p><strong>ATENÇÃO:</strong> Verifique se os dados abaixo estão corretos. Se houver algo de errado, por favor, click na opção <strong>Editar</strong> disponível no canto superior direito desta seção, caso contrário siga para a próxima seção.</p>
         <ul class="dados_pessoais">
             <li><strong>Nome</strong>: </li>
             <li><strong>CPF</strong>: </li>
             <li><strong>Telefone</strong>: </li>
             <li><strong>Email</strong>: </li>
         </ul>
-        <legend>Dados de Pagamento</legend>
+        
+
+        <legend>Cupom de Desconto</legend>
+        <p>Você pode aproveitar ainda mais as artes disponíveis no <strong>Quiosque Online</strong> utilizando um cupom de desconto caso o vendedor tenha fornecido. Se desejar, entre em contato com o mesmo para saber a existência de algum cupom.</p>
+
+        <form class="cupom" action="" method="">
+            <label>Cupom: </label>
+            <input type="text" name="cupom_desconto" size="6" maxlength="6"> 
+        </form>
+        <h6>Fica a cargo do vendedor fornecer ou não um desconto para essa venda</h6>
+        
+
+        <legend>Formas de Pagamento</legend>
+
+
     </div>
 </div>
 
