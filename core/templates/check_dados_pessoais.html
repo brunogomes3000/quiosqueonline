@@ -35,7 +35,19 @@ Detalhe da Arte | {{ block.super }}
 
         <legend>Formas de Pagamento</legend>
 
-
+            <dl>
+                <dt>
+                    <input type="radio" name="pagamento" value="boletoBancario" Class="boletoBancario">
+                    <img src="{% static 'img/boleto3.jpg' %}"> Pague o Boleto Bancario via xxxxx
+                </dt>
+            </dl>
+            <dl>
+                <dt>
+                    <input type="radio" name="pagamento" value="cartaoCredito" Class="cartaoCredito">
+                    <img src="{% static 'img/cartao.png' %}"> Pague com o cartão de crédito
+                </dt>
+            </dl>
+                                
     </div>
 </div>
 
