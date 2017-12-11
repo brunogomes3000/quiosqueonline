@@ -23,12 +23,7 @@ def resultadobuscar(request):
 		else:
 			categoriaget=Categoria.objects.values_list('id')
 
-		if 'dataCadastroget' in request.GET and request.GET.get("dataCadastroget")!="":
-			dataCadastroget=request.GET.get("dataCadastroget")
-		else:
-			dataCadastroget= Arte.objects.values_list('id')
-
-		artes =  Arte.objects.filter(descricao__icontains=nomeget)
+		artes =  Arte.objects.filter(descricao__icontains=nomeget, categoria__id__in=categoriaget)
 	else:
 		artes = Arte.objects.all()
 	context = {

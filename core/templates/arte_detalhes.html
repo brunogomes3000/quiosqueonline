@@ -10,23 +10,16 @@ Detalhe da Arte | {{ block.super }}
 
 
 <div class="container">​
-    <div class="row mt">
-        ​​   
-        <div class="container">
-        
-            <div class="col-lg-8">
-             <img class="img-responsive" src="{{Artes.imagem_principal.url}}" alt="" width="300"/>
+    <div class="row mt">     
+        <div class="col-lg-8">
+             <img class="img-responsive" src="{{Artes.imagem_principal.url}}" alt="" width="900"/>
              <hr><h3><b>Nome da Arte:</b></h3><h1>{{ Artes.descricao }}</h1></hr>
              <hr><h3><b>Data de Cadastro:</b></h3><h1>{{ Artes.dataCadastro }}</h1></hr>
              <hr><h3><b>Autor:</b></h3><h1>{{ Artes.email }}</h1></hr>
-         </div>
-     </div>
-
-
-
-
-     ​</div>
- </div>
+           
+        </div>
+    </div>
+</div>
  ​​
 
 ​{% endblock %}

@@ -23,12 +23,6 @@ Resultado da Busca | {{ block.super }}
          <option value="{{cat.id}}">{{cat.categoria}}</option>
          {% endfor %}
         </select>
-
-        Data de Cadastro:  <select name="dataCadastroget">
-         {% for dat in artes %}
-        <option value="{{dat.id}}">{{dat.dataCadastro}}</option>
-        {% endfor %}
-        </select> 
         <button type="submit">Buscar</button></p></b>
 </form>
 
@@ -40,36 +34,33 @@ Resultado da Busca | {{ block.super }}
         <div class="row mt">
 
                 {% for arte in artes %}
+        <div class="container">
                 <div class="row mt">
                         <div class="col-md-3">
 
 
-                                <img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" width="300" />
+                                <img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" width="900" />
 
 
                                 <h3>{{arte.descricao}}</h3>
 
                                 <p><a href="{% url 'arte_detalhes' %}?id={{arte.id }}"> Detalhes</a></p>
                         </div>
-
-                        {% empty %}
+                </div>
+        </div>
+                                   {% empty %}
                         <div class="container">
                                 <div class="row mt">
-                                        
+                                        <div class="col-md-3">
+
                                          <h1>Nenhuma arte cadastrada</h1>
 
+                                        </div>
                                  </div>
                         </div>
 
-                        {% endfor %}
-                </div>
-        </div>
+                {% endfor %}
+         </div>
+</div>
 
-
-
-
-
-
-
-
-        {% endblock %}
+{% endblock %}
