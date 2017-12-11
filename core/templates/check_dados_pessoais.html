@@ -43,11 +43,15 @@ Detalhe da Arte | {{ block.super }}
             </dl>
             <dl>
                 <dt>
-                    <input type="radio" name="pagamento" value="cartaoCredito" Class="cartaoCredito">
+                    <input type="radio" name="pagamento" value="cartaoCredito" Class="cartaoCredito" href="#collapseCartaoCredito" data-toggle="collapse">
                     <img src="{% static 'img/cartao.png' %}"> Pague com o cartão de crédito
                 </dt>
             </dl>
-                                
+            <div class="collapse" id="collapseCartaoCredito">
+                <div class="card card-body">
+                    
+                </div>
+            </div>                    
     </div>
 </div>
 
