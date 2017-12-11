@@ -40,9 +40,7 @@
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet"> 
-  
-  <!-- Bootstrap CSS File -->
-  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
   
   <!-- Libraries CSS Files -->
   <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -52,7 +50,8 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   
 <!-- =======================================================
   Theme Name: Imperial
@@ -68,39 +67,29 @@
 <!--==========================
   Header Section
   ============================-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">  
-      <ul id="gn-menu" class="gn-menu-main">
-        <li class="gn-trigger">
-         <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-         
-         <nav class="gn-menu-wrapper">
-          <div class="gn-scroller">
-            <ul class="gn-menu">
-              <li>
-                <a class="gn-icon gn-icon-search" href="{% url 'resultadobuscar' %}">Buscar arte</a>
-              </li>
-              <br/>
-            <li>
-              <a class="gn-icon gn-icon-archive" href="{% url 'gerenciararte' %}">Minhas Artes</a>
-            </li>
-            <li>
-              <a class="gn-icon gn-icon-download">Meu Carrinho</a>
-            </li>
-            <li><a class="gn-icon gn-icon-cog">Gerenciar Perfil</a></li>
-            <li><a class="gn-icon gn-icon-help">Sobre</a></li>
 
-          </ul>
-        </div>
-        <!-- /gn-scroller -->
-      </nav>
-    </li>
-        <!--<li><a href="http://tympanus.net/codrops">Codrops</a></li>
-        <li><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/HeaderEffects/"><span>Previous Demo</span></a></li>
-        <li><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16030"><span>Back to the Codrops Article</span></a></li>-->
-      </ul> 
-    </div><!-- #header -->
+  <header class="header">
+  <nav class="navbar navbar-expand-lg navbar-inverse fixed-top bg-light">
+    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Busca" aria-label="Search">
+        <button type="button" class="btn btn-danger my-2 my-sm-0">Buscar</button>
+      </form>
+    </div>
   </nav>
+  </header>
 <!--==========================
   Hero Section
   ============================-->
