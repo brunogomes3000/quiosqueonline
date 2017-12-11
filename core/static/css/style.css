@@ -14,12 +14,12 @@ body {
 }
 
 a {
-  color: #03C4EB;
+  color: #9e0f0f;
   transition: 0.5s;
 }
 
 a:hover, a:active, a:focus {
-  color: #03c5ec;
+  color: ##840c0c;
   outline: none;
   text-decoration: none;
 }
@@ -237,7 +237,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   list-style: none;
 }
-
+.nav-bar li{
+  color: #B30206;
+}
 .nav-menu ul {
   position: absolute;
   display: none;
