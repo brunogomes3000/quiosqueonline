@@ -19,7 +19,7 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  color: #03c5ec;
+  color: ##840c0c;
   outline: none;
   text-decoration: none;
 }

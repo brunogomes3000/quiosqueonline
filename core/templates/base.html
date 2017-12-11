@@ -14,11 +14,9 @@
   <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
   <meta name="author" content="Codrops" />
   <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/form_dados.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
-
   <script src="{% static 'js/modernizr.custom.js' %}"></script>
 
   <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
@@ -40,7 +38,9 @@
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet"> 
-
+  
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   
   <!-- Libraries CSS Files -->
   <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
@@ -50,8 +50,7 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
   
 <!-- =======================================================
   Theme Name: Imperial
@@ -67,37 +66,39 @@
 <!--==========================
   Header Section
   ============================-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">  
+      <ul id="gn-menu" class="gn-menu-main">
+        <li class="gn-trigger">
+         <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+         
+         <nav class="gn-menu-wrapper">
+          <div class="gn-scroller">
+            <ul class="gn-menu">
+              <li>
+                <a class="gn-icon gn-icon-search" href="{% url 'resultadobuscar' %}">Buscar arte</a>
+              </li>
+              <br/>
+            <li>
+              <a class="gn-icon gn-icon-archive" href="{% url 'gerenciararte' %}">Minhas Artes</a>
+            </li>
+            <li>
+              <a class="gn-icon gn-icon-download">Meu Carrinho</a>
+            </li>
+            <li><a class="gn-icon gn-icon-cog">Gerenciar Perfil</a></li>
+            <li><a class="gn-icon gn-icon-help">Sobre</a></li>
 
-  <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-inverse fixed-top bg-light">
-      <a class="navbar-brand" href="{% url 'index' %}">
-        <img src="{% static 'img/logo.png' %}" width="80" height="50" alt="Logo">
-      </a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gerenciararte' %}">Minhas Artes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'carrinho' %}">Meu Carrinho</a>
-          </li class="nav-item">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gerenciar Perfil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sobre</a>
-          </li>
-        </ul>
-        <form class="form-inline mt- mt-md-0" action="{% url 'resultadobuscar' %}">
-          <input class="form-control mr-sm-2" type="text" placeholder="Busca" aria-label="Search">
-          <button type="submit" class="btn btn-danger my-2 my-sm-0">Buscar</button>
-        </form>
-      </div>
-    </nav>
-  </header>
+          </ul>
+        </div>
+        <!-- /gn-scroller -->
+      </nav>
+    </li>
+        <!--<li><a href="http://tympanus.net/codrops">Codrops</a></li>
+        <li><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/HeaderEffects/"><span>Previous Demo</span></a></li>
+        <li><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16030"><span>Back to the Codrops Article</span></a></li>-->
+      </ul> 
+    </div><!-- #header -->
+  </nav>
 <!--==========================
   Hero Section
   ============================-->
