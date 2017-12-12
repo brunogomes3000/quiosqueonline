@@ -97,4 +97,20 @@ def editarArte(request):
 	}
 	return render(request, 'editarArte.html', context)
 
+def enviarArte(request):
+	categoria = Categoria.objects.all()
+	page = request.GET.get('page', 1)
 
+
+	if request.method == 'GET':
+		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="":
+			categoriaget=request.GET.get("categoriaget")
+		else:
+			categoriaget=Categoria.objects.values_list('id')
+		
+
+	context = {
+		'categoria': categoria
+	}
+
+	return render(request, 'enviarArte.html', context)
