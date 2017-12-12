@@ -11,8 +11,10 @@ Resultado da Busca | {{ block.super }}
 
 
 <div class="container">
+ <div class="col-md-5">
 
         <br><h3><b><p> Resultado da Pesquisa para: </p></b></h3></br>
+        </div>
 </hr>
 <form method="get" action="{% url 'resultadobuscar' %}">      
    <b><p> Buscar por nome: <input type="text" name="nomeget"/>
@@ -39,7 +41,7 @@ Resultado da Busca | {{ block.super }}
                         <div class="col-md-3">
 
 
-                                <img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" width="900" />
+                                <img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" width="300" />
 
 
                                 <h3>{{arte.descricao}}</h3>
@@ -63,4 +65,14 @@ Resultado da Busca | {{ block.super }}
          </div>
 </div>
 
+<div class="container">
+        <ul class="pagination">
+                {% for ar in artes.paginator.page_range %}
+                {% if artes.number == ar %}​
+                <li class="active"><span>{{ ar }}<span class="sr-only">(current)</span></span></li>
+                {% else %} 
+                <li><a href="?page={{ ar }}">{{ ar }}</a></li>
+                {% endif %}
+                {% endfor %}
+</div>
 {% endblock %}
