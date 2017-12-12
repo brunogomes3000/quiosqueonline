@@ -16,6 +16,10 @@ Página Inicial | {{ block.super }}
 			<div class="actions">
 				<a href="#" class="btn-get-started" data-toggle="modal" data-target="#register-modal">FAZER CADASTRO</a>
 				<a href="#" class="btn-services" data-toggle="modal" data-target="#login-modal">LOGIN</a>
+				<form method="get" action="{% url 'resultadobuscar' %}">      
+   				<b><p> Buscar por nome: <input type="text" name="nomeget"/>
+   				<button type="submit">Buscar</button></p></b>
+   				</form>
 			</div>
 		</div>
 	</div>
