@@ -11,8 +11,9 @@ urlpatterns = [
     url(r'^arte_detalhes/$',views.arte_detalhes,name="arte_detalhes"),
     url(r'^gerenciararte/$',views.gerenciararte,name="gerenciararte"),
     url(r'^carrinho/$',views.carrinho,name="carrinho"),
-    url(r'^edit_dados_pessoais/$',views.edit_dados_pessoais,name="edit_dados_pessoais"),
-    url(r'^check_dados_pessoais/$',views.check_dados_pessoais,name="check_dados_pessoais"),
+    url(r'^editarArte/$',views.editarArte,name="editarArte"),
+    url(r'^editarDadosPessoais/$',views.editarDadosPessoais,name="editarDadosPessoais"),
+    url(r'^checkDadosPessoais/$',views.checkDadosPessoais,name="checkDadosPessoais"),
     url(r'^admin/', admin.site.urls),
 ]
 

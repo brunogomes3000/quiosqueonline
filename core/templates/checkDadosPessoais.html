@@ -2,26 +2,34 @@
 {% load static %}
 
 {% block titulo %}
-Detalhe da Arte | {{ block.super }}
+Identificação e Pagamento | {{ block.super }}
 {% endblock %}
 
 {% block conteudo %}
 
-<h1 class="centered">Dados Pessoais</h1><br />
-<hr/>
+
 <div class="container">​
     <div class="row mt">
 
-
-        <legend><a class="editar" href="{% url 'edit_dados_pessoais' %}">Editar</a>Dados Pessoais</legend>
-        <p><strong>ATENÇÃO:</strong> Verifique se os dados abaixo estão corretos. Se houver algo de errado, por favor, click na opção <strong>Editar</strong> disponível no canto superior direito desta seção, caso contrário siga para a próxima seção.</p>
-        <ul class="dados_pessoais">
-            <li><strong>Nome</strong>: </li>
-            <li><strong>CPF</strong>: </li>
-            <li><strong>Telefone</strong>: </li>
-            <li><strong>Email</strong>: </li>
-        </ul>
+        <h1 class="centered">Identificação e Pagamento</h1><br />
+        <hr/>
         
+        <div class="Identificacao">
+            <div class="topo_identificacao">
+                <legend><a class="editar" href="{% url 'editarDadosPessoais' %}">Editar</a>Dados Pessoais</legend>
+            </div>
+            <div class="aviso_Identificação">
+                <p align="justify"><strong>ATENÇÃO:</strong> Verifique se os dados abaixo estão corretos. Se houver algo de errado, por favor, click na opção <strong>Editar</strong> disponível no canto superior direito desta seção, caso contrário siga para a próxima seção.</p>
+            </div>
+            <div class="list-dadosPessoais">
+                <ul class="dados_pessoais">
+                    <li><strong>Nome</strong>: </li>
+                    <li><strong>CPF</strong>: </li>
+                    <li><strong>Telefone</strong>: </li>
+                    <li><strong>Email</strong>: </li>
+                </ul>
+            </div>
+        </div>
 
         <legend>Cupom de Desconto</legend>
         <p>Você pode aproveitar ainda mais as artes disponíveis no <strong>Quiosque Online</strong> utilizando um cupom de desconto caso o vendedor tenha fornecido. Se desejar, entre em contato com o mesmo para saber a existência de algum cupom.</p>
@@ -38,7 +46,7 @@ Detalhe da Arte | {{ block.super }}
             <dl>
                 <dt>
                     <input type="radio" name="pagamento" value="boletoBancario" Class="boletoBancario">
-                    <img src="{% static 'img/boleto3.jpg' %}"> Pague o Boleto Bancario via xxxxx
+                    <img src="{% static 'img/boleto3.jpg' %}"> Pague o Boleto Bancario via xxxxx <br />
                 </dt>
             </dl>
             <dl>

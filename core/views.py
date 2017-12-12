@@ -61,6 +61,7 @@ def arte_detalhes(request):
 	return render(request,'arte_detalhes.html', context)
 
 
+
 def gerenciararte(request):
 	artes = Arte.objects.all()
 	imagens = Imagens.objects.all()
@@ -82,9 +83,18 @@ def carrinho(request):
 	#jogar em contexto os produtos e o valor total
 	return render(request, 'carrinho.html')
 
-def check_dados_pessoais(request):
-	return render(request, 'check_dados_pessoais.html')
+def checkDadosPessoais(request):
+	return render(request, 'checkDadosPessoais.html')
 
-def edit_dados_pessoais(request):
-	return render(request, 'edit_dados_pessoais.html')
+def editarDadosPessoais(request):
+	return render(request, 'editarDadosPessoais.html')
+
+def editarArte(request):
+	id_arte = request.GET.get("id")
+	arte = Arte.objects.get(id=id_arte)
+	context = {
+		'arte': arte
+	}
+	return render(request, 'editarArte.html', context)
+
 
