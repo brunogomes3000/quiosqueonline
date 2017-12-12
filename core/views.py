@@ -31,10 +31,10 @@ def resultadobuscar(request):
 	#else:
 		#artes = Arte.objects.all()
 
-		paginator = Paginator(artest, 3)
+		paginator = Paginator(artest, 8)
 	else:
 		artest = Arte.objects.all()
-		paginator = Paginator(artest, 3)
+		paginator = Paginator(artest, 8)
 	try:
 		artes = paginator.page(page)
 	except 	PageNotAnInteger:
