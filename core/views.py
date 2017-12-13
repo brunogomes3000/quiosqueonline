@@ -10,8 +10,6 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
-from django.contrib.auth.models import Group
-
 
 
 
@@ -35,9 +33,6 @@ def index(request):
 			user = user_post.save(commit=False)
 			user.set_password(user_post.cleaned_data['password'])
 			user.save()
-			grupo = Group.objects.get(name='Usuarios')
-			grupo.user_set.add(user)
-
 			if form2.is_valid():
 				usuario_post = UsuarioModelForm(request.POST)
 				usuario = usuario_post.save(commit=False)
@@ -143,7 +138,12 @@ def enviarArte(request):
 def usuario(request):
 	return render( request, 'usuario.html')
 
+<<<<<<< HEAD
 @login_required(login_url='login')
 def usuario (request):
 	return render(request, 'usuario.html')
+=======
+def sobre(request):
+	return render( request, 'sobre.html')
+>>>>>>> a1ab584ad34f05f6779e1792609b60628e8ba53b
 

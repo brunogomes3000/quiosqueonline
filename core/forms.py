@@ -14,6 +14,6 @@ class UsuarioModelForm(forms.ModelForm):
 
 	class Meta:
 		model = Usuario
-		fields = ['nome', 'sobrenome', 'cpfCpnj' , 'email', 'senha']
+		fields = ['nome', 'sobrenome', 'cpfCnpj' , 'email', 'senha']
 
 		
