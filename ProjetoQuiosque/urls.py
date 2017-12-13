@@ -27,6 +27,7 @@ urlpatterns =   [
     url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
     url(r'^admin/', admin.site.urls),
 
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

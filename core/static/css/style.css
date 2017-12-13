@@ -800,7 +800,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #testimonials .profile a:hover {
   font-weight: 700;
-  color: #EB032C;
+  color: #ff0022;
   margin-bottom: 5px;
 }
 
@@ -848,7 +848,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #team .member .pic {
   margin-bottom: 15px;
   overflow: hidden;
-  height: 260px;
+  height: 150px;
 }
 
 #team .member .pic img {

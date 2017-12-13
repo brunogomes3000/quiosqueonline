@@ -7,15 +7,32 @@ Detalhe da Arte | {{ block.super }}
 
 {% block conteudo %}
 
-<h1 class="centered">Dados Pessoais</h1><br />
-<hr/>
-<div class="container">​
-    <div class="row mt">
-        <!-- Para concluir, conferir site da gearbest -->
-        <legend>Editar Dados Pessoais</legend>
+<div class="container wow fadeInUp">
 
+    <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Editar Dados</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">Por favor, insira os dados corretos para prosseguir com a sua compra</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label class="col-form-label" for="formGroupExampleInput" desable><span>Nome</span></label><br>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.nome }}">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.email }}">
+                </div>
+                <a href="{% url 'checkDadosPessoais' %}"><button type="button" class="btn btn-danger my-2 my-sm-0" >Editar</button></a>
+            </form>       
+        </div>
     </div>
 </div>
+
 
 
 ​{% endblock %}
