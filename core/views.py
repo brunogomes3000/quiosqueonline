@@ -138,12 +138,11 @@ def enviarArte(request):
 def usuario(request):
 	return render( request, 'usuario.html')
 
-<<<<<<< HEAD
+
 @login_required(login_url='login')
 def usuario (request):
 	return render(request, 'usuario.html')
-=======
+
 def sobre(request):
 	return render( request, 'sobre.html')
->>>>>>> a1ab584ad34f05f6779e1792609b60628e8ba53b
 
