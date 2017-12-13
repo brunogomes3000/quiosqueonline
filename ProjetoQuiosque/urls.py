@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^gerenciararte/$',views.gerenciararte,name="gerenciararte"),
     url(r'^carrinho/$',views.carrinho,name="carrinho"),
     url(r'^editarArte/$',views.editarArte,name="editarArte"),
+    url(r'^enviarArte/$',views.enviarArte,name="enviarArte"),
     url(r'^editarDadosPessoais/$',views.editarDadosPessoais,name="editarDadosPessoais"),
     url(r'^checkDadosPessoais/$',views.checkDadosPessoais,name="checkDadosPessoais"),
     url(r'^usuario/$', views.usuario, name="usuario"),

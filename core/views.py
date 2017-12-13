@@ -100,6 +100,3 @@ def editarArte(request):
 def usuario(request):
 	return render( request, 'usuario.html')
 
-def login(request):
-	return render( request, 'login.html')
-
