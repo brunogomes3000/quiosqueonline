@@ -345,7 +345,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .loginmodal-container {
   padding: 30px;
-  max-width: 350px;
   width: 100% !important;
   background-color: #F7F7F7;
   margin: 0 auto;
