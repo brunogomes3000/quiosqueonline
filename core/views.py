@@ -57,14 +57,13 @@ def resultadobuscar(request):
 			nomeget=request.GET.get("nomeget")
 		else:
 			nomeget=""
-		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="":
+		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="Escolha a categoria":
 			categoriaget=request.GET.get("categoriaget")
 		else:
 			categoriaget=Categoria.objects.values_list('id')
 
 		artest =  Arte.objects.filter(descricao__icontains=nomeget, categoria__id__in=categoriaget)
-	#else:
-		#artes = Arte.objects.all()
+	
 
 		paginator = Paginator(artest, 8)
 	else:
@@ -101,6 +100,16 @@ def gerenciararte(request):
 	artes = Arte.objects.all()
 	imagens = Imagens.objects.all()
 	usuario = Usuario.objects.all()
+	page = request.GET.get('page', 1)
+	paginator = Paginator(artes, 8)
+
+	try:
+		artes = paginator.page(page)
+	except 	PageNotAnInteger:
+		artes = paginator.page(1)
+	except EmptyPage:
+		artes = paginator.page(paginator.num_pages)
+	
 	context = {
 		'artes': artes,
 		'imagens':imagens,

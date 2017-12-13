@@ -7,30 +7,38 @@ Minhas Artes | {{ block.super }}
 
 {% block conteudo %}
 
-<div class="container">
-	<div class="row mt">
-
-		<h1>Bem-vindo, {{usuario.nome}}</h1>
-		
-	</div>
-
-	<legend><a class="enviarArte" href="{% url 'enviarArte' %}">Enviar arte</a></legend>
-
-	{% for arte in artes %}
-	<div class="row mt">
-		<div class="col-md-3">
-			<img class="img-responsive" src="{{arte.imagem_principal.url}}" alt="" width="300" />
-			<h3>{{arte.descricao}}</h3>
-			<button type="button" class="btn btn-outline-danger	"><i class="fa fa-trash"></i>Excluir</button>
-			<a href="{% url 'editarArte' %}?id={{arte.id}}" class="btn-services" >Editar</a>
-			<br/>
-
+<section id="team">
+	<div class="container wow fadeInUp">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="section-title">Minhas artes</h3>
+				<div class="section-title-divider"></div>
+			</div>
 		</div>
-	</div>
-</div>
-	{% empty %}
-	<p>Nenhuma arte cadastrada</p>
-	{% endfor %}
-</div>
 
-{% endblock %}
+		<div class="row">
+			{% for arte in artes %}
+			<div class="col-md-3">
+				<div class="member">
+					<div class="pic"><img class="img-tumbnail" src="{{arte.imagem_principal.url}}" alt=""></div>
+					<a href="#" class="btn btn-outline-danger" role="button" aria-pressed="true"><i class="fas fa-trash"></i> Excluir </a>
+					<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-pencil-alt"></i></a>
+				</div>
+			</div>
+			{% empty %}
+			<p>Nenhuma arte cadastrada</p>
+			{% endfor %}
+		</div>
+				<ul class="pagination justify-content-center">
+					{% for ar in artes.paginator.page_range %}
+					{% if artes.number == ar %}​
+					<li class="page-item active"><a class="page-link"><span>{{ ar }}<span class="sr-only">(current)</span></span></a></li>
+					{% else %} 
+					<li class="page-item"><a class="page-link" href="?page={{ ar }}">{{ ar }}</a></li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+	</div>
+</section>
+
+	{% endblock %}
