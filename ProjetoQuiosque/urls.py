@@ -8,7 +8,10 @@ from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
 
 
-urlpatterns = [
+
+
+
+urlpatterns =   [
 	url(r'^$', views.index, name="index"),
     url(r'^resultadobuscar/$', views.resultadobuscar, name="resultadobuscar"),
     url(r'^arte_detalhes/$',views.arte_detalhes,name="arte_detalhes"),
@@ -21,8 +24,11 @@ urlpatterns = [
     url(r'^usuario/$', views.usuario, name="usuario"),
     url(r'^login/$', login, {'template_name':'login.html'}, name ="login"),
     url(r'^admin/', admin.site.urls),
+<<<<<<< HEAD
     url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
 
+=======
+>>>>>>> a98a2ac7c8939f57c1a67235000be6d4a0c1f480
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
