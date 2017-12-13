@@ -10,6 +10,8 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
+from django.contrib.auth.models import Group
+
 
 
 
@@ -33,6 +35,9 @@ def index(request):
 			user = user_post.save(commit=False)
 			user.set_password(user_post.cleaned_data['password'])
 			user.save()
+			grupo = Group.objects.get(name='Usuarios')
+			grupo.user_set.add(user)
+
 			if form2.is_valid():
 				usuario_post = UsuarioModelForm(request.POST)
 				usuario = usuario_post.save(commit=False)
