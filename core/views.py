@@ -6,7 +6,11 @@ from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
 from django.core.paginator import Paginator
+
+from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import redirect
+
 
 
 
@@ -134,6 +138,12 @@ def enviarArte(request):
 def usuario(request):
 	return render( request, 'usuario.html')
 
+<<<<<<< HEAD
+@login_required(login_url='login')
+def usuario (request):
+	return render(request, 'usuario.html')
+=======
 def sobre(request):
 	return render( request, 'sobre.html')
+>>>>>>> a1ab584ad34f05f6779e1792609b60628e8ba53b
 
