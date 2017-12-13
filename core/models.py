@@ -15,6 +15,11 @@ class Usuario(models.Model):
 
         return self.nome
 
+    class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
+        
+
 class Categoria(models.Model):
     categoria = models.CharField("Categoria da arte", max_length=20, null=True)
 
