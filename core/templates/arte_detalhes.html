@@ -8,29 +8,22 @@ Detalhe da Arte | {{ block.super }}
 {% block conteudo %}
 
 
-<div class="container">​
-    <div class="row mt">
-​​    </div><!-- col-lg-8 -->​​
-​   <div class="col-lg-4">
-    <img src="arte.png" width="80%" height="80%"><br/><br/>​
+<div class="container wow fadeInUp">
+    <div class="row">
+        <div class="col-md-12">
+        <br>
+            <h3 class="section-title">Detalhe da imagem</h3>
+            <div class="section-title-divider"></div>
+            <form class="align-center">
+            </form>
+            <img class="img-fluid img-thumbnail rounded float-left" src="{{Artes.imagem_principal.url}}" alt="" width="750" hspace="15"/>
+            <h3><b>Nome da Arte:</b></h3><h2>{{ Artes.descricao }}</h2>
+            <h3><b>Data de Cadastro:</b></h3><h2>{{ Artes.dataCadastro }}</h2>
+            <h3><b>Autor:</b></h3><h2>{{ Artes.email }}</h2>
+            <h3><b>Preço:</b></h3><h2>{{ Artes.preco }}</h2>
+            <button type="button" class="btn btn-danger btn-lg btn-block">Adicionar ao Carrinho</button>
+        </div>
     </div>
-{% for A1 in Artes %}
-        <div class="container">
-        <div class="col-lg-8">
-        <h3><b>Nome da Arte:</b></h3>
-        <h1>{{ A1.descricao }}<h1>
-        <hr>
-        <h3><b>Data de Cadastro;</b></h3>
-        <h1>{{ A1.dataCadastro }}</h1>
-        <br>
-        <h3><b>E-Mail:</b></h3>
-        <h1>{{ A1.email }}</h1>
-        <br>
-
-{% endfor %}
-​</div>
 </div>
-</div>
-​​
 
 ​{% endblock %}
