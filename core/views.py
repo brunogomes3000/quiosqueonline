@@ -139,3 +139,6 @@ def enviarArte(request):
 def usuario(request):
 	return render( request, 'usuario.html')
 
+def sobre(request):
+	return render( request, 'sobre.html')
+

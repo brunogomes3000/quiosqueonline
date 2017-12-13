@@ -9,15 +9,7 @@
     {% block titulo %}
     Quiosque Online
     {% endblock %}
-  </title>
-  <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
-  <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
-  <meta name="author" content="Codrops" />
-  <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
-  <script src="{% static 'js/modernizr.custom.js' %}"></script>
+  </title>  
 
   <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
   <meta property="og:title" content="">
@@ -44,14 +36,12 @@
 
 
   <!-- Libraries CSS Files -->
-  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/animate-css/animate.min.css' %}" rel="stylesheet">
-
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
   <!-- Main Stylesheet File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+  
 
 <!-- =======================================================
 Theme Name: Imperial
@@ -88,8 +78,8 @@ Header Section
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'usuario' %}"> Gerenciar Perfil <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#"> Sobre </a>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'sobre' %}"> Sobre </a>
     </li>
   </ul>
   <ul class="navbar-nav navbar-inclie">
