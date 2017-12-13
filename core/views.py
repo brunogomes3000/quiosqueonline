@@ -97,4 +97,9 @@ def editarArte(request):
 	}
 	return render(request, 'editarArte.html', context)
 
+def usuario(request):
+	return render( request, 'usuario.html')
+
+def login(request):
+	return render( request, 'login.html')
 

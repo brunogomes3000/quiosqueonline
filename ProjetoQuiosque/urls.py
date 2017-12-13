@@ -4,6 +4,8 @@ from django.contrib import admin
 from core import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import login
+
 
 urlpatterns = [
 	url(r'^$', views.index, name="index"),
@@ -14,7 +16,11 @@ urlpatterns = [
     url(r'^editarArte/$',views.editarArte,name="editarArte"),
     url(r'^editarDadosPessoais/$',views.editarDadosPessoais,name="editarDadosPessoais"),
     url(r'^checkDadosPessoais/$',views.checkDadosPessoais,name="checkDadosPessoais"),
+    url(r'^usuario/$', views.usuario, name="usuario"),
+    url(r'^login/$', login, {'template_name':'login.html'}, name ="longin"),
     url(r'^admin/', admin.site.urls),
+    
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
