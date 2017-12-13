@@ -24,13 +24,6 @@ urlpatterns =   [
     url(r'^usuario/$', views.usuario, name="usuario"),
     url(r'^sobre/$', views.sobre, name="sobre"),
     url(r'^login/$', login, {'template_name':'login.html'}, name ="login"),
-<<<<<<< HEAD
-    url(r'^admin/', admin.site.urls),
-
-    url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
-
-=======
->>>>>>> a1ab584ad34f05f6779e1792609b60628e8ba53b
     url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
     url(r'^admin/', admin.site.urls),
 
