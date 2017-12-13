@@ -22,9 +22,10 @@ urlpatterns =   [
     url(r'^editarDadosPessoais/$',views.editarDadosPessoais,name="editarDadosPessoais"),
     url(r'^checkDadosPessoais/$',views.checkDadosPessoais,name="checkDadosPessoais"),
     url(r'^usuario/$', views.usuario, name="usuario"),
+    url(r'^sobre/$', views.sobre, name="sobre"),
     url(r'^login/$', login, {'template_name':'login.html'}, name ="login"),
-    url(r'^admin/', admin.site.urls),
     url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
+    url(r'^admin/', admin.site.urls),
 
 ]
 

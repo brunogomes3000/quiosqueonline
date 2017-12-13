@@ -19,7 +19,7 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  color: ##840c0c;
+  color: #666666;
   outline: none;
   text-decoration: none;
 }
@@ -788,7 +788,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #testimonials .profile h4 {
   font-weight: 700;
-  color: #03C4EB;
+  color: #EB032C;
+  margin-bottom: 5px;
+}
+
+#testimonials .profile a {
+  font-weight: 700;
+  color: #666666;
+  margin-bottom: 5px;
+}
+
+#testimonials .profile a:hover {
+  font-weight: 700;
+  color: #EB032C;
   margin-bottom: 5px;
 }
 
