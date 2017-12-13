@@ -24,11 +24,8 @@ urlpatterns =   [
     url(r'^usuario/$', views.usuario, name="usuario"),
     url(r'^login/$', login, {'template_name':'login.html'}, name ="login"),
     url(r'^admin/', admin.site.urls),
-<<<<<<< HEAD
     url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
 
-=======
->>>>>>> a98a2ac7c8939f57c1a67235000be6d4a0c1f480
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
