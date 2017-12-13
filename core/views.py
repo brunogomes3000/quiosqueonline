@@ -4,16 +4,22 @@ from .models import Usuario
 from .models import Imagens
 from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UsuarioModelForm
 from django.core.paginator import Paginator
+from django.shortcuts import redirect
+
+
 
 # Create your views here.
 def index(request):
 	Artes = Arte.objects.all().order_by('-id')[:3]
 
 	form = UserCreationForm (request.POST or None)
-	
+	form2 = UsuarioModelForm(request.POST or None)
+
 	context = {
 		'form': form,
+		'form2': form2,
 
 	}
 
@@ -23,7 +29,15 @@ def index(request):
 			user = user_post.save(commit=False)
 			user.set_password(user_post.cleaned_data['password'])
 			user.save()
-			form.save() 
+			if form2.is_valid():
+				usuario_post = UsuarioModelForm(request.POST)
+				usuario = usuario_post.save(commit=False)
+				usuario.user = user
+				usuario.save()
+			return redirect('/index')
+			form.save()
+			
+
 
 	return render (request, 'index.html', context)
 

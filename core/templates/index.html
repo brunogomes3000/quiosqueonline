@@ -50,20 +50,22 @@ Página Inicial | {{ block.super }}
 				Crie sua conta
 			</h1>
 			<br>
-			<form>
-				<p>{{form.username.label}}: {{form.username}}​</p>
-				<input type="text" name="last_name" placeholder="Sobrenome">
-				<input type="text" name="address" placeholder="Endereço">
-				<input type="text" name="cpf"  placeholder="CPF">
-				<input type="text" name="email" placeholder="Email">
-				<input type="password" name="pass" placeholder="Senha">
-				<input type="password" name="confirm_pass" placeholder="Confirme sua senha">
+			<form action="​{% url 'index' %}​" method="post">
+			{% csrf_token %}
+				{{form2.nome.label}}:<br/> {{form2.nome}}​
+				{{form2.sobrenome.label}}:<br/> {{form2.sobrenome}}​
+				{{form2.cpfCpnj.label}}:<br/> {{form2.cpfCpnj}}​
+				{{form.username.label}}:<br/> {{form.username}}​
+				{{form.email.label}}:<br> {{form.email}}​ 
+				{{form.password1.label}}: <br> {{form.password1}}​
+				{{form.password2.label}}: <br> {{form.password2}}​
 				<input type="submit" name="registro" class="login loginmodal-submit" value="Criar Conta">
 			</form>
-			<div class="login-help">
-				<a href="#"> Registrar-se </a>
-			</div>
 		</div>
 	</div>
 </div>
+
+
+
 {% endblock %}
+
