@@ -41,6 +41,8 @@ Página Inicial | {{ block.super }}
 	</div>
 </div>
 
+
+
 <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog">
 		<div class="loginmodal-container">
@@ -49,7 +51,7 @@ Página Inicial | {{ block.super }}
 			</h1>
 			<br>
 			<form>
-				<input type="text" name="first_name" placeholder="Nome">
+				<p>{{form.username.label}}: {{form.username}}​</p>
 				<input type="text" name="last_name" placeholder="Sobrenome">
 				<input type="text" name="address" placeholder="Endereço">
 				<input type="text" name="cpf"  placeholder="CPF">
