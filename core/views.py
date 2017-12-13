@@ -31,10 +31,10 @@ def resultadobuscar(request):
 	#else:
 		#artes = Arte.objects.all()
 
-		paginator = Paginator(artest, 8)
+		paginator = Paginator(artest, 3)
 	else:
 		artest = Arte.objects.all()
-		paginator = Paginator(artest, 8)
+		paginator = Paginator(artest, 3)
 	try:
 		artes = paginator.page(page)
 	except 	PageNotAnInteger:
@@ -97,20 +97,6 @@ def editarArte(request):
 	}
 	return render(request, 'editarArte.html', context)
 
-def enviarArte(request):
-	categoria = Categoria.objects.all()
-	page = request.GET.get('page', 1)
+def usuario(request):
+	return render( request, 'usuario.html')
 
-
-	if request.method == 'GET':
-		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="":
-			categoriaget=request.GET.get("categoriaget")
-		else:
-			categoriaget=Categoria.objects.values_list('id')
-		
-
-	context = {
-		'categoria': categoria
-	}
-
-	return render(request, 'enviarArte.html', context)
