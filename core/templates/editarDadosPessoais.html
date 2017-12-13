@@ -27,7 +27,7 @@ Detalhe da Arte | {{ block.super }}
                     <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.email }}">
                 </div>
-                <button href="{% url 'editarDadosPessoais' %}" type="button" class="btn btn-danger btn-lg btn-block">Salvar</button>
+                <a href="{% url 'checkDadosPessoais' %}"><button type="button" class="btn btn-danger my-2 my-sm-0" >Editar</button></a>
             </form>       
         </div>
     </div>
