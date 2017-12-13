@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.models import Group
 from django.forms import ModelForm
 from .models import Usuario
 
@@ -16,3 +15,5 @@ class UsuarioModelForm(forms.ModelForm):
 	class Meta:
 		model = Usuario
 		fields = ['nome', 'sobrenome', 'cpfCpnj' , 'email', 'senha']
+
+		
