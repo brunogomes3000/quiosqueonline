@@ -94,3 +94,5 @@ MEDIA_URL = '/media/'
 
 #depois q faz login ele redireciona para a página inicial
 LOGIN_REDIRECT_URL = 'core:home'
+LOGIN_URL ='longin'
+LOGIN_REDIRECT_URL_ = ('usuario')
