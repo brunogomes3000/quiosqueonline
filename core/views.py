@@ -5,6 +5,7 @@ from .models import Imagens
 from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -119,4 +120,8 @@ def enviarArte(request):
 	
 def usuario(request):
 	return render( request, 'usuario.html')
+
+@login_required(login_url='login')
+def usuario (request):
+	return render(request, 'usuario.html')
 
