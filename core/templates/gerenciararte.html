@@ -12,13 +12,6 @@ Minhas Artes | {{ block.super }}
 
 		<h1>Bem-vindo, {{usuario.nome}}</h1>
 		
-		<form method="get" action="{% url 'gerenciararte' %}">	
-			<div class="form-group">
-				<input type="text" name="nomeget" placeholder="Buscar">
-				<button type="submit">Buscar</button>
-			</div>
-		</form>
-		
 	</div>
 
 	<legend><a class="enviarArte" href="{% url 'enviarArte' %}">Enviar arte</a></legend>

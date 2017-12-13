@@ -25,135 +25,144 @@
   <meta property="og:url" content="">
   <meta property="og:site_name" content="">
   <meta property="og:description" content="">
-  
+
   <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="">
   <meta name="twitter:title" content="">
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="">
-  
+
   <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
   <link href="favicon.ico" rel="shortcut icon">
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet"> 
-  
+
   <!-- Bootstrap CSS File -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-  
+
   <!-- Libraries CSS Files -->
   <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/animate-css/animate.min.css' %}" rel="stylesheet">
-  
+
   <!-- Main Stylesheet File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
-  
+
 <!-- =======================================================
-  Theme Name: Imperial
-  Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
-  Author: BootstrapMade.com
-  Author URL: https://bootstrapmade.com
-  ======================================================= -->
+Theme Name: Imperial
+Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+Author: BootstrapMade.com
+Author URL: https://bootstrapmade.com
+======================================================= -->
 </head>
 
 <body>
   <div id="preloader"></div>
 
 <!--==========================
-  Header Section
-  ============================-->
+Header Section
+============================-->
 
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a href="{% url 'index' %}"><img class="" src="{% static '/img/logo.png' %}" alt="Quiosque" width="80px"></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a href="{% url 'index' %}"><img class="" src="{% static '/img/logo.png' %}" alt="Quiosque" width="80px"></a>
 
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'gerenciararte' %}"> Minhas Artes <span class="sr-only">(current)</span></a>
-        </li>
-      </li>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'carrinho' %}"> Meu Carrinho <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'gerenciararte' %}"> Minhas Artes <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'usuario' %}"> Gerenciar Perfil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"> Sobre </a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'resultadobuscar' %}">
-      <input class="form-control mr-sm-2" href="{% url 'resultadobuscar' %}" name="nomeget"  placeholder="Buscar Artes">
-      <button class="btn btn-danger my-2 my-sm-0"  href="{% url 'resultadobuscar' %}" type="submit" >Search</button>
-    </form>
-  </div>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'carrinho' %}"> Meu Carrinho <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'usuario' %}"> Gerenciar Perfil <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"> Sobre </a>
+    </li>
+  </ul>
+  <ul class="navbar-nav navbar-inclie">
+    <span class="navbar-text">
+      Olá, Usuário
+    </span>
+    <li class="nav-item active">
+      <a class="nav-link" href="#"> Sair </a>
+    </li>
+  </ul>
+  <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'resultadobuscar' %}">
+
+    <input class="form-control mr-sm-2" href="{% url 'resultadobuscar' %}" name="nomeget"  placeholder="Buscar Artes">
+    <button class="btn btn-danger my-2 my-sm-0"  href="{% url 'resultadobuscar' %}" type="submit" ><b>BUSCAR</b></button>
+  </form>
+</div>
 </nav>
 <!--==========================
-  Hero Section
-  ============================-->
-  {% block conteudo %}
+Hero Section
+============================-->
+{% block conteudo %}
 
-  <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="{% static 'img/logo.png' %}" alt="Quiosque" width="300px">
-        </div>
-        
-        <h1>Bem vindo ao QUIOSQUE ONLINE</h1>
-        <h2>Faça seu cadastro ou Login</h2>
-        <div class="actions">
-          <a href="#about" class="btn-get-started">FAZER CADASTRO</a>
-          <a href="#services" class="btn-services">LOGIN</a>
-        </div>
+<section id="hero">
+  <div class="hero-container">
+    <div class="wow fadeIn">
+      <div class="hero-logo">
+        <img class="" src="{% static 'img/logo.png' %}" alt="Quiosque" width="300px">
+      </div>
+
+      <h1>Bem vindo ao QUIOSQUE ONLINE</h1>
+      <h2>Faça seu cadastro ou Login</h2>
+      <div class="actions">
+        <a href="#about" class="btn-get-started">FAZER CADASTRO</a>
+        <a href="#services" class="btn-services">LOGIN</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  {% endblock %}
+{% endblock %}
 <!--==========================
-  Footer
-  ============================--> 
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="copyright">
-            &copy; Copyright <strong>Quiosque Online</strong>. Todos os direitos reservados
-          </div>
+Footer
+============================--> 
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="copyright">
+          &copy; Copyright <strong>Quiosque Online</strong>. Todos os direitos reservados
         </div>
       </div>
     </div>
-  </footer><!-- #footer -->
-  
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  </div>
+</footer><!-- #footer -->
 
-  <!-- Required JavaScript Libraries -->
-  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
-  <script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
-  <script src="{% static 'lib/morphext/morphext.min.js' %}"></script>
-  <script src="{% static 'lib/wow/wow.min.js' %}"></script>
-  <script src="{% static 'lib/stickyjs/sticky.js' %}"></script>
-  <script src="{% static 'lib/easing/easing.js' %}"></script>
-  
-  <!-- Template Specisifc Custom Javascript File -->
-  <script src="{% static 'js/custom.js' %}"></script>
-  
-  <script src="{% static 'contactform/contactform.js' %}"></script>
-  
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Required JavaScript Libraries -->
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'lib/morphext/morphext.min.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/stickyjs/sticky.js' %}"></script>
+<script src="{% static 'lib/easing/easing.js' %}"></script>
+
+<!-- Template Specisifc Custom Javascript File -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+<script src="{% static 'contactform/contactform.js' %}"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 

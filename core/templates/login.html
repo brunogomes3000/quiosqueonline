@@ -10,12 +10,19 @@ Login | {{ block.super }}
 <hr/>
 <div class="container">
 <div class="row mt">
-<from action=""  method="post">
+
+{% if form.errors %}
+<div class="alert alert-danger">
+<p> Usuário ou senha inválido. Tente novamente. </p>
+</div>
+{% endif %}
+
+<form action="{% url 'login' %}"  method="post">
 {% csrf_token %}
-<p>longin:<input type="text" name="login"/></p>
-<p>senha:<input type="password" name="senha"/></p>
+<p>{{form.username.label}}: {{ form.username}}</p>
+<p>{{form.password.label}}: {{ form.password}}</p>
 <p><input type="submit" value="Enviar" /></p>
-</from>
+</form>
 </div>
 </div>
 {% endblock%}
