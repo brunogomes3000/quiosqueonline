@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Login | {{ block.super }}
+{% endblock %}
+
+{% block conteudo %}
+<h1 class="centered">Autenticação</h1><br />
+<hr/>
+<div class="container">
+<div class="row mt">
+
+{% if form.errors %}
+<div class="alert alert-danger">
+<p> Usuário ou senha inválido. Tente novamente. </p>
+</div>
+{% endif %}
+
+<form action="{% url 'login' %}"  method="post">
+{% csrf_token %}
+<p>{{form.username.label}}: {{ form.username}}</p>
+<p>{{form.password.label}}: {{ form.password}}</p>
+<p><input type="submit" value="Enviar" /></p>
+</form>
+</div>
+</div>
+{% endblock%}

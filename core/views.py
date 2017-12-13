@@ -4,12 +4,48 @@ from .models import Usuario
 from .models import Imagens
 from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UsuarioModelForm
 from django.core.paginator import Paginator
+from django.shortcuts import redirect
+from django.contrib.auth.models import Group
+
+
+
 
 # Create your views here.
 def index(request):
 	Artes = Arte.objects.all().order_by('-id')[:3]
-	return render(request, 'index.html')
+
+	form = UserCreationForm (request.POST or None)
+	form2 = UsuarioModelForm(request.POST or None)
+
+	context = {
+		'form': form,
+		'form2': form2,
+
+	}
+
+	if request.method == 'POST':
+		if form.is_valid():
+			user_post = UserCreationForm(request.POST)
+			user = user_post.save(commit=False)
+			user.set_password(user_post.cleaned_data['password'])
+			user.save()
+			grupo = Group.objects.get(name='Usuarios')
+			grupo.user_set.add(user)
+
+			if form2.is_valid():
+				usuario_post = UsuarioModelForm(request.POST)
+				usuario = usuario_post.save(commit=False)
+				usuario.user = user
+				usuario.save()
+			return redirect('/index')
+			form.save()
+			
+
+
+	return render (request, 'index.html', context)
+
 
 def resultadobuscar(request):
 	categoria = Categoria.objects.all()
@@ -98,19 +134,8 @@ def editarArte(request):
 	return render(request, 'editarArte.html', context)
 
 def enviarArte(request):
-	categoria = Categoria.objects.all()
-	page = request.GET.get('page', 1)
+	return render( request, 'enviarArte.html')
+	
+def usuario(request):
+	return render( request, 'usuario.html')
 
-
-	if request.method == 'GET':
-		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="":
-			categoriaget=request.GET.get("categoriaget")
-		else:
-			categoriaget=Categoria.objects.values_list('id')
-		
-
-	context = {
-		'categoria': categoria
-	}
-
-	return render(request, 'enviarArte.html', context)

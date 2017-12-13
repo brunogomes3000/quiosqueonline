@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Usuario(models.Model):
@@ -8,9 +9,16 @@ class Usuario(models.Model):
     senha = models.CharField('Senha', max_length=16, null=True)
     cpfCpnj = models.CharField('CPF', max_length=11, null=True)
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     def __str__(self):
 
         return self.nome
+
+    class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
+        
 
 class Categoria(models.Model):
     categoria = models.CharField("Categoria da arte", max_length=20, null=True)
