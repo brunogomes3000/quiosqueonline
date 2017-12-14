@@ -8,6 +8,9 @@ Identificação e Pagamento | {{ block.super }}
 {% block conteudo %}
 
 <section id="portfolio">
+
+    
+
     <div class="container wow fadeInUp">
         <div class="row">
             <div class="col-md-12">
@@ -17,7 +20,8 @@ Identificação e Pagamento | {{ block.super }}
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4"></div><!--Utilizado para centralizar a segunda DIV-->
+            <div class="col-md-4">
                 <form>
                     <div class="form-group">
                         <label class="col-form-label" for="formGroupExampleInput" desable><span>Nome</span></label><br>
@@ -27,13 +31,18 @@ Identificação e Pagamento | {{ block.super }}
                         <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
                         <label class="col-form-label" for="formGroupExampleInput" desable><h4>{{ usuario.email }}</h4></label>
                     </div>
+                    <div class="member">
+                        <p align="right"><a href="{% url 'editarDadosPessoais' %}" class="btn btn-outline-danger" role="button" aria-pressed="true"> Editar </a>
+                        <a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true"> Seguir </a></p>
+                    </div>
                 </form>       
             </div>
-            <div class="col-lg-4">
-                <a href="{% url 'editarDadosPessoais' %}"><button type="button" class="btn btn-green">Editar</button></a>
-            </div>
+            <div class="col-md-4"></div><!--Utilizado para centralizar a segunda DIV-->
         </div>
     </div>
+
+    
+    
 </section>
 
 ​{% endblock %}
