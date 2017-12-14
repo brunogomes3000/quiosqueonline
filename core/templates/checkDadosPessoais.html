@@ -7,35 +7,34 @@ Identificação e Pagamento | {{ block.super }}
 
 {% block conteudo %}
 
-
-<div class="container wow fadeInUp">
-
-    <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Identificação</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">Verifique se os dados abaixo estão corretos</p>
+<section id="portfolio">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Identificação</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description">Verifique se os dados abaixo estão corretos</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label class="col-form-label" for="formGroupExampleInput" desable><span>Nome</span></label><br>
+                        <label class="col-form-label" for="formGroupExampleInput" desable><h4>{{ usuario.nome }}</h4></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
+                        <label class="col-form-label" for="formGroupExampleInput" desable><h4>{{ usuario.email }}</h4></label>
+                    </div>
+                </form>       
+            </div>
+            <div class="col-lg-4">
+                <a href="{% url 'editarDadosPessoais' %}"><button type="button" class="btn btn-green">Editar</button></a>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <div class="form-group">
-                    <label class="col-form-label" for="formGroupExampleInput" desable><span>Nome</span></label><br>
-                    <label class="col-form-label" for="formGroupExampleInput" desable><h4>{{ usuario.nome }}</h4></label>
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
-                    <label class="col-form-label" for="formGroupExampleInput" desable><h4>{{ usuario.email }}</h4></label>
-                </div>
-            </form>       
-        </div>
-        <div class="col-lg-4">
-            <a href="{% url 'editarDadosPessoais' %}"><button type="button" class="btn btn-green">Editar</button></a>
-        </div>
-    </div>
-</div>
-
+</section>
 
 ​{% endblock %}
         
