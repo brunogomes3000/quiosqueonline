@@ -125,19 +125,19 @@ def carrinho(request):
 	#jogar em contexto os produtos e o valor total
 	return render(request, 'carrinho.html')
 
-def checkDadosPessoais(request):
-	return render(request, 'checkDadosPessoais.html')
+def checkdadospessoais(request):
+	return render(request, 'checkdadospessoais.html')
 
-def editarDadosPessoais(request):
-	return render(request, 'editarDadosPessoais.html')
+def editdadospessoais(request):
+	return render(request, 'editdadospessoais.html')
 
-def editarArte(request):
+def editarte(request):
 	id_arte = request.GET.get("id")
 	arte = Arte.objects.get(id=id_arte)
 	context = {
 		'arte': arte
 	}
-	return render(request, 'editarArte.html', context)
+	return render(request, 'editarte.html', context)
 
 def enviarArte(request):
 	categoria = Categoria.objects.all()
