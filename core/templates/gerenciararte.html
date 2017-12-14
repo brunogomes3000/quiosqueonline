@@ -22,7 +22,7 @@ Minhas Artes | {{ block.super }}
 				<div class="member">
 					<div class="pic"><img class="img-tumbnail" src="{{arte.imagem_principal.url}}" alt=""></div>
 					<a href="#" class="btn btn-outline-danger" role="button" aria-pressed="true"><i class="fas fa-trash"></i> Excluir </a>
-					<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-pencil-alt"></i></a>
+					<a href="{% url 'editarArte' %}?id={{arte.id}}" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-pencil-alt"></i></a>
 				</div>
 			</div>
 			{% empty %}
