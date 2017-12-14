@@ -12,8 +12,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
 
-
-
 # Create your views here.
 def index(request):
 	Artes = Arte.objects.all().order_by('-id')[:3]
@@ -142,7 +140,14 @@ def editarArte(request):
 	return render(request, 'editarArte.html', context)
 
 def enviarArte(request):
-	return render( request, 'enviarArte.html')
+	categoria = Categoria.objects.all()
+	categoriaget=Categoria.objects.values_list('id')
+
+	context = {
+		'categoria': categoria,
+	}
+
+	return render( request, 'enviarArte.html', context)
 	
 def usuario(request):
 	return render( request, 'usuario.html')

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Usuario(models.Model):
     nome = models.CharField('Nome', max_length=15, null=True)
     sobrenome = models.CharField('Sobrenome', max_length=15, null=True)
-    email = models.CharField('E-mail', primary_key=True, max_length=30)
+    email = models.EmailField('E-mail', primary_key=True, max_length=30)
     senha = models.CharField('Senha', max_length=16, null=True)
     cpfCnpj = models.CharField('CPF', max_length=11, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -17,7 +17,7 @@ class Usuario(models.Model):
     class Meta:
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
-        
+
 
 class Categoria(models.Model):
     categoria = models.CharField("Categoria da arte", max_length=20, null=True)

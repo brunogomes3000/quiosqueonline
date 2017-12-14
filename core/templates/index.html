@@ -56,7 +56,8 @@ Página Inicial | {{ block.super }}
 				Faça login com sua conta
 			</h1>
 			<br>
-			<form>
+			<form action="" method="POST">
+				{% csrf_token %}
 				<input type="text" name="user" placeholder="Username">
 				<a href="#">Esqueci a senha</a>
 				<input type="password" name="pass" placeholder="Password">

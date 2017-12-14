@@ -6,12 +6,17 @@ Página de Usuário|{{ block.super}}
 {% endblock %}
 
 {% block conteudo %}
-
-<h1 class="centered">Página de Usuário</h1><br />
-<hr/>
-<div class="container">
-<div class="row mt">
-<p> Opa {{user}}</p>
-</div>
-</div>
+<section id="portfolio">
+	<div class="container wow fadeInUp">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="section-title">Página do usuário</h3>
+				<div class="section-title-divider"></div>
+				<div class="row mt">
+					<p> Opa {{user}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 {% endblock %}
