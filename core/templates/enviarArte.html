@@ -7,28 +7,28 @@ Enviar Arte | {{ block.super }}
 
 {% block conteudo %}
 <section id="portfolio">
-<div class="container">
-	<div class="row mt">
+	<div class="container">
+		<div class="row mt">
 
-		<form>
-			<h4>Nome: <input type="text" name="nome" value=""></h4> 
-			<h4>Valor: <input type="text" name="valor" value=""></h4>
-			<h4>Categoria:
-				<select  name="categoriaget"> 
-       			<option value=""></option>
-       			{% for cat in categoria %}
-       				<option value="{{cat.id}}">{{cat.categoria}}</option>
-       			{% endfor %}
-       			</select>
-       		</h4>
+			<form>
+				<h4>Nome: <input type="text" name="nome" value=""></h4>
+				<h4>Valor: <input type="text" name="valor" value=""></h4>
+				<h4>Categoria:
+					<select  name="categoriaget">
+						<option value=""></option>
+						{% for cat in categoria %}
+						<option value="{{cat.id}}">{{cat.categoria}}</option>
+						{% endfor %}
+					</select>
+				</h4>
 
 
-       		<h4>Enviar foto</h4>
+				<h4>Enviar foto</h4>
 
-       		<a href="#" class="btn-get-started" data-toggle="modal" data-target="#register-modal"><h4><b>SALVAR</b></h4></a>
-		</form>
-		
+				<a href="#" class="btn-get-started" data-toggle="modal" data-target="#register-modal"><h4><b>SALVAR</b></h4></a>
+			</form>
+
+		</div>
 	</div>
-</div>
 </section>
 {% endblock %}
