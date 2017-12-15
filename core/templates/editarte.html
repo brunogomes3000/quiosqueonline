@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Editar Arte | {{ block.super }}
+{% endblock %}
+
+{% block conteudo %}
+
+
+
+<div class="container wow fadeInUp">
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+      <h3 class="section-title">Editar</h3>
+      <div class="section-title-divider"></div>
+    </div>
+    <div class="col-md-6">
+      <img class="img-fluid img-thumbnail rounded float-left" src="{{arte.imagem_principal.url}}" alt="" width="750" hspace="15"/>
+    </div>
+    <div class="col-md-3">
+      <form>
+        <div class="form-group">
+          <h3><b>Nome</b></h3>
+          <h2><input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ arte.descricao }}"></h2>
+        </div>
+        <div class="form-group">
+          <h3><b>Preço:</b></h3>
+          <h2><input class="form-control mr-sm-2" href="#" name="nomeget" placeholder="{{ arte.preco }}"></h2>
+        </div>
+      </form>
+    </div>
+    <button type="button" class="btn btn-danger btn-lg btn-block">Salvar</button>
+  </div>
+</div>
+​​
+
+​{% endblock %}

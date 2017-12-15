@@ -5,13 +5,12 @@ from .models import Imagens
 from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
+from .forms import ArteModelForm
 from django.core.paginator import Paginator
-
+from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
-
-
 
 
 # Create your views here.
@@ -40,7 +39,7 @@ def index(request):
 				usuario.save()
 			return redirect('/index')
 			form.save()
-			
+
 
 
 	return render (request, 'index.html', context)
@@ -57,14 +56,13 @@ def resultadobuscar(request):
 			nomeget=request.GET.get("nomeget")
 		else:
 			nomeget=""
-		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="":
+		if 'categoriaget' in request.GET and request.GET.get("categoriaget")!="Escolha a categoria":
 			categoriaget=request.GET.get("categoriaget")
 		else:
 			categoriaget=Categoria.objects.values_list('id')
 
 		artest =  Arte.objects.filter(descricao__icontains=nomeget, categoria__id__in=categoriaget)
-	#else:
-		#artes = Arte.objects.all()
+
 
 		paginator = Paginator(artest, 8)
 	else:
@@ -77,7 +75,7 @@ def resultadobuscar(request):
 	except EmptyPage:
 		artes = paginator.page(paginator.num_pages)
 
-		
+
 
 	context = {
 		'categoria': categoria,
@@ -85,13 +83,13 @@ def resultadobuscar(request):
 		'imagens': imagens,
 	}
 
-	return render(request, 'ResultadoBuscar.html', context) 
+	return render(request, 'ResultadoBuscar.html', context)
 
 def arte_detalhes(request):
 	id_arte = request.GET.get("id")
-	Artes = Arte.objects.get(id = id_arte)
+	artes = Arte.objects.get(id = id_arte)
 	context = {
-	'Artes': Artes
+	'artes': artes
 	}
 	return render(request,'arte_detalhes.html', context)
 
@@ -101,6 +99,16 @@ def gerenciararte(request):
 	artes = Arte.objects.all()
 	imagens = Imagens.objects.all()
 	usuario = Usuario.objects.all()
+	page = request.GET.get('page', 1)
+	paginator = Paginator(artes, 8)
+
+	try:
+		artes = paginator.page(page)
+	except 	PageNotAnInteger:
+		artes = paginator.page(1)
+	except EmptyPage:
+		artes = paginator.page(paginator.num_pages)
+
 	context = {
 		'artes': artes,
 		'imagens':imagens,
@@ -118,23 +126,37 @@ def carrinho(request):
 	#jogar em contexto os produtos e o valor total
 	return render(request, 'carrinho.html')
 
-def checkDadosPessoais(request):
-	return render(request, 'checkDadosPessoais.html')
+def finalizarcompra(request):
+	return render(request, 'finalizarcompra.html')
 
-def editarDadosPessoais(request):
-	return render(request, 'editarDadosPessoais.html')
+def editdadospessoais(request):
+	return render(request, 'editdadospessoais.html')
 
-def editarArte(request):
+def editarte(request):
 	id_arte = request.GET.get("id")
 	arte = Arte.objects.get(id=id_arte)
 	context = {
 		'arte': arte
 	}
-	return render(request, 'editarArte.html', context)
+	return render(request, 'editarte.html', context)
 
 def enviarArte(request):
-	return render( request, 'enviarArte.html')
-	
+	formArte = ArteModelForm(request.POST or None)
+	context = {
+	'formArte' : formArte
+	}
+	if request.method == 'POST':
+		if formArte.is_valid():
+			arte_post = ArteModelForm(request.POST)
+			arte = arte_post.save(commit=False)
+			arte.save()
+			return redirect('/gerenciararte')
+	return render( request, 'enviarArte.html', context)
+
+def usuario(request):
+	return render( request, 'usuario.html')
+
+
 
 @login_required(login_url='login')
 def usuario (request):
@@ -142,5 +164,4 @@ def usuario (request):
 
 def sobre(request):
 	return render( request, 'sobre.html')
-
 

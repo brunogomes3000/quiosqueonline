@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Detalhe da Arte | {{ block.super }}
+{% endblock %}
+
+{% block conteudo %}
+
+<section id="portfolio">
+
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+              <h3 class="section-title">Editar Dados</h3>
+              <div class="section-title-divider"></div>
+              <p class="section-description">Por favor, insira os dados corretos para prosseguir com a sua compra</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div> <!--Utilizado para centralizar a segunda DIV-->
+            <div class="col-md-4">
+                <form>
+                    <div class="form-group">
+                        <label class="col-form-label" for="formGroupExampleInput" desable><span>Nome</span></label><br>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.nome }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.email }}">
+                    </div>
+                    <div class="form-group">
+                        <p align="right"><a href="{% url 'finalizarcompra' %}" class="btn btn-outline-danger" role="button" aria-pressed="true"> Salvar </a></p>
+                    </div>
+                </form>       
+            </div>
+            <div class="col-md-4"></div><!--Utilizado para centralizar a segunda DIV-->
+        </div>
+  </div>
+</section>
+
+
+​{% endblock %}
