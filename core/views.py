@@ -126,8 +126,8 @@ def carrinho(request):
 	#jogar em contexto os produtos e o valor total
 	return render(request, 'carrinho.html')
 
-def checkdadospessoais(request):
-	return render(request, 'checkdadospessoais.html')
+def finalizarcompra(request):
+	return render(request, 'finalizarcompra.html')
 
 def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
