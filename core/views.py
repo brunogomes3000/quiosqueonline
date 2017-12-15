@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
 from .forms import ArteModelForm
 from django.core.paginator import Paginator
-
+from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
@@ -87,9 +87,9 @@ def resultadobuscar(request):
 
 def arte_detalhes(request):
 	id_arte = request.GET.get("id")
-	Artes = Arte.objects.get(id = id_arte)
+	artes = Arte.objects.get(id = id_arte)
 	context = {
-	'Artes': Artes
+	'artes': artes
 	}
 	return render(request,'arte_detalhes.html', context)
 
@@ -150,7 +150,8 @@ def enviarArte(request):
 			arte_post = ArteModelForm(request.POST)
 			arte = arte_post.save(commit=False)
 			arte.save()
-	return render( request, 'gerenciararte.html', context)
+			return redirect('/gerenciararte')
+	return render( request, 'enviarArte.html', context)
 
 def usuario(request):
 	return render( request, 'usuario.html')
