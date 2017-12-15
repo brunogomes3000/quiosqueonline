@@ -20,4 +20,4 @@ class UsuarioModelForm(forms.ModelForm):
 class ArteModelForm(forms.ModelForm):
     class Meta:
         model = Arte
-        fields = "__all__"
+        fields = ['descricao','preco','imagem_principal','categoria']
