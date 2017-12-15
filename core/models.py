@@ -15,7 +15,6 @@ class Usuario(models.Model):
     email = models.EmailField('E-mail', primary_key=True, max_length=30)
     senha = models.CharField('Senha', max_length=16, null=True)
     cpfCnpj = models.CharField('CPF', max_length=11, null=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     cartao = models.ManyToManyField(cartaoCredito)
     def __str__(self):
 

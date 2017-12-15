@@ -141,16 +141,18 @@ def editarte(request):
 	return render(request, 'editarte.html', context)
 
 def enviarArte(request):
-	formArte = ArteModelForm(request.POST or None)
-	context = {
-	'formArte' : formArte
-	}
 	if request.method == 'POST':
+		formArte = ArteModelForm(request.POST, request.FILES)
 		if formArte.is_valid():
-			arte_post = ArteModelForm(request.POST)
-			arte = arte_post.save(commit=False)
+			arte = formArte.save(commit=False)
 			arte.save()
 			return redirect('/gerenciararte')
+
+	formArte = ArteModelForm()
+	context = {
+		'formArte' : formArte,
+
+	}
 	return render( request, 'enviarArte.html', context)
 
 def usuario(request):
@@ -164,4 +166,3 @@ def usuario (request):
 
 def sobre(request):
 	return render( request, 'sobre.html')
-
