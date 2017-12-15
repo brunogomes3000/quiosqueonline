@@ -5,13 +5,12 @@ from .models import Imagens
 from .models import Categoria
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
+from .forms import ArteModelForm
 from django.core.paginator import Paginator
 
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
-
-
 
 
 # Create your views here.
@@ -40,7 +39,7 @@ def index(request):
 				usuario.save()
 			return redirect('/index')
 			form.save()
-			
+
 
 
 	return render (request, 'index.html', context)
@@ -63,7 +62,7 @@ def resultadobuscar(request):
 			categoriaget=Categoria.objects.values_list('id')
 
 		artest =  Arte.objects.filter(descricao__icontains=nomeget, categoria__id__in=categoriaget)
-	
+
 
 		paginator = Paginator(artest, 8)
 	else:
@@ -76,7 +75,7 @@ def resultadobuscar(request):
 	except EmptyPage:
 		artes = paginator.page(paginator.num_pages)
 
-		
+
 
 	context = {
 		'categoria': categoria,
@@ -84,7 +83,7 @@ def resultadobuscar(request):
 		'imagens': imagens,
 	}
 
-	return render(request, 'ResultadoBuscar.html', context) 
+	return render(request, 'ResultadoBuscar.html', context)
 
 def arte_detalhes(request):
 	id_arte = request.GET.get("id")
@@ -109,7 +108,7 @@ def gerenciararte(request):
 		artes = paginator.page(1)
 	except EmptyPage:
 		artes = paginator.page(paginator.num_pages)
-	
+
 	context = {
 		'artes': artes,
 		'imagens':imagens,
@@ -142,8 +141,17 @@ def editarte(request):
 	return render(request, 'editarte.html', context)
 
 def enviarArte(request):
-	return render( request, 'enviarArte.html')
-	
+	formArte = ArteModelForm(request.POST or None)
+	context = {
+	'formArte' : formArte
+	}
+	if request.method == 'POST':
+		if formArte.is_valid():
+			arte_post = ArteModelForm(request.POST)
+			arte = arte_post.save(commit=False)
+			arte.save()
+	return render( request, 'gerenciararte.html', context)
+
 def usuario(request):
 	return render( request, 'usuario.html')
 
@@ -154,5 +162,3 @@ def usuario (request):
 
 def sobre(request):
 	return render( request, 'sobre.html')
-
-

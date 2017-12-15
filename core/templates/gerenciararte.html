@@ -41,7 +41,7 @@ Minhas Artes | {{ block.super }}
 			{% for ar in artes.paginator.page_range %}
 			{% if artes.number == ar %}​
 			<li class="page-item active"><a class="page-link"><span>{{ ar }}<span class="sr-only">(current)</span></span></a></li>
-			{% else %} 
+			{% else %}
 			<li class="page-item">
 				<a class="page-link" href="?page={{ ar }}">{{ ar }}</a>
 			</li>
