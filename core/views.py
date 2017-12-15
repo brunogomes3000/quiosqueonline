@@ -147,8 +147,10 @@ def enviarArte(request):
 	}
 	if request.method == 'POST':
 		if formArte.is_valid():
-			form.save()
-	return render( request, 'enviarArte.html', context)
+			arte_post = ArteModelForm(request.POST)
+			arte = arte_post.save(commit=False)
+			arte.save()
+	return render( request, 'gerenciararte.html', context)
 
 def usuario(request):
 	return render( request, 'usuario.html')

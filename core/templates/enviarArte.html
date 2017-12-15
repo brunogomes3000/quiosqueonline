@@ -12,15 +12,18 @@ Enviar Arte | {{ block.super }}
 
 			<form action="{% url 'enviarArte' %}" method="post">
 				{% csrf_token %}
-				<h4>{{formArte.descricao.label}}:</h4>
+
+				<h4>Nome da arte</h4>
 				<p>{{formArte.descricao}}</p>
+				<h4>{{formArte.email.label}}:</h4>
+				<p>{{formArte.email}}</p>
 				<h4>{{formArte.preco.label}}:</h4>
 				<p>{{formArte.preco}}</p>
 				<h4>{{formArte.imagem_principal.label}}:</h4>
 				<p>{{formArte.imagem_principal}}</p>
 				<h4>{{formArte.categoria.label}}:</h4>
 				<p>{{formArte.categoria}}</p>
-
+				<p><input type="submit" value="Enviar" /></p>
 				</form>
 
 		</div>
