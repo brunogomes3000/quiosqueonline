@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.forms import ModelForm
 
 class Usuario(models.Model):
     nome = models.CharField('Nome', max_length=15, null=True)
@@ -36,7 +36,6 @@ class Arte(models.Model):
     preco = models.FloatField("Preço", null=True)
     imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
-
     def __str__(self):
         return self.descricao
 
