@@ -83,11 +83,17 @@ Header Section
     </li>
   </ul>
   <ul class="navbar-nav navbar-inclie">
-    <span class="navbar-text">
-      Olá, Usuário
-    </span>
+    
     <li class="nav-item active">
-      <a class="nav-link" href="#"> Sair </a>
+      {% if user.is_authenticated %}
+      <span class="navbar-text">
+      Olá, {{user}}
+      </span>
+      <a href="{% url 'logout'%}">Sair</a>
+      {% else %}
+      <a href="{% url 'login' %}">Entrar</a>
+      {% endif %}
+      <!--<a class="nav-link" href="#"> Sair </a>-->
     </li>
   </ul>
   <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'resultadobuscar' %}">
