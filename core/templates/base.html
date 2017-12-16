@@ -82,21 +82,27 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'sobre' %}"> Sobre </a>
       </li>
-    </ul>
-    <ul class="navbar-nav navbar-inclie">
-      <span class="navbar-text">
-        Olá, Usuário
-      </span>
-      <li class="nav-item active">
-        <a class="nav-link" href="#"> Sair </a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'resultadobuscar' %}">
+    </li>
+  </ul>
+  <ul class="navbar-nav navbar-inclie">
 
-      <input class="form-control mr-sm-2" href="{% url 'resultadobuscar' %}" name="nomeget"  placeholder="Buscar Artes">
-      <button class="btn btn-danger my-2 my-sm-0"  href="{% url 'resultadobuscar' %}" type="submit" ><b>BUSCAR</b></button>
-    </form>
-  </div>
+    <li class="nav-item active">
+      {% if user.is_authenticated %}
+      <span class="navbar-text">
+      Olá, {{user}}
+      </span>
+      <a href="{% url 'logout'%}">Sair</a>
+      {% else %}
+      <a href="{% url 'login' %}">Entrar</a>
+      {% endif %}
+    </li>
+  </ul>
+  <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'resultadobuscar' %}">
+
+    <input class="form-control mr-sm-2" href="{% url 'resultadobuscar' %}" name="nomeget"  placeholder="Buscar Artes">
+    <button class="btn btn-danger my-2 my-sm-0"  href="{% url 'resultadobuscar' %}" type="submit" ><b>BUSCAR</b></button>
+  </form>
+</div>
 </nav>
 <!--==========================
 Hero Section

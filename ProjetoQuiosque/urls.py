@@ -23,9 +23,11 @@ urlpatterns =   [
     url(r'^finalizarcompra/$',views.finalizarcompra,name="finalizarcompra"),
     url(r'^usuario/$', views.usuario, name="usuario"),
     url(r'^sobre/$', views.sobre, name="sobre"),
-    url(r'^login/$', login, {'template_name':'login.html'}, name ="login"),
+    url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^sair/$', logout, {'next_page': '/'}, name="logout"),
     url(r'^admin/', admin.site.urls),
+    
+
 
 
 ]

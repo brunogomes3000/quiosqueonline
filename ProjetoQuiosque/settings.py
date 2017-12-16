@@ -93,6 +93,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'core', 'media')
 MEDIA_URL = '/media/'
 
 #depois q faz login ele redireciona para a página inicial
-LOGIN_REDIRECT_URL = 'core:home'
-LOGIN_URL ='index'
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL ='login'
 LOGIN_REDIRECT_URL_ = ('index')

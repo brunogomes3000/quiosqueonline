@@ -2,14 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
+class cartaoCredito(models.Model):
+    numero = models.CharField('Número de cartão', max_length=16, null=True)
+    codSeguranca = models.CharField('Código de segurança', max_length=3, null=True)
+    nomeCartao = models.CharField('Nome', max_length=40, null=True)
+    dataValidade = models.DateField('Data Vencimento')
+
+
 class Usuario(models.Model):
     nome = models.CharField('Nome', max_length=15, null=True)
     sobrenome = models.CharField('Sobrenome', max_length=15, null=True)
     email = models.EmailField('E-mail', primary_key=True, max_length=30)
     senha = models.CharField('Senha', max_length=16, null=True)
     cpfCnpj = models.CharField('CPF', max_length=11, null=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-
+    cartao = models.ManyToManyField(cartaoCredito)
     def __str__(self):
 
         return self.nome
