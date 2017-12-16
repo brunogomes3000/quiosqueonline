@@ -3,13 +3,13 @@ from .models import Arte
 from .models import Usuario
 from .models import Imagens
 from .models import Categoria
+from .forms import CartaoModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
 from .forms import ArteModelForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-
 from django.shortcuts import redirect
 
 
@@ -127,7 +127,15 @@ def carrinho(request):
 	return render(request, 'carrinho.html')
 
 def finalizarcompra(request):
-	return render(request, 'finalizarcompra.html')
+	form = CartaoModelForm(request.POST or None)
+	context = {
+		'form': form,
+	}
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+			return redirect('/finalizarcompra')
+	return render(request, 'finalizarcompra.html', context)
 
 def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
