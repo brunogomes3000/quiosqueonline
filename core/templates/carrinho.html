@@ -1,23 +1,39 @@
 {% extends "base.html" %}
-{% load static %}
-
+{% load static%}
 
 {% block titulo %}
-Meu carrinho | {{ block.super }}
+Meu Carrinho | {{ block.super }}
 {% endblock %}
 
 {% block conteudo %}
 
-<div class="container">​
-  <div class="row mt">
-    ​​
-    {% for A1 in Artes %}
-    <div class="container">
-      <div class="col-lg-8">
-
-        <hr><h3><b>Nome da Arte:</b></h3><h1>{{ A1.descricao }}</h1></hr>
-        <hr><h3><b>Preço:</b></h3><h1>{{ A1.preco }}</h1></hr>
+<section id="team">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">Meu Carrinho</h3>
+        <div class="section-title-divider"></div>
       </div>
+    </div>
+    ​​
+      
+        <h3><b>Remover</b></h3>
+      </div>
+      <!--br/-->
+    </div>
+
+    {% for A1 in Artes %}
+
+    <div class="container">
+      <div class="col-md-8">
+
+        <h4><b>Nome da Arte:</b></h4><h2>{{ A1.descricao }}</h2>
+        <h4><b>Preço:</b></h4><h2>{{ A1.preco }}</h2>
+      </div>
+      <div class="col-md-4">
+        <hr><a href="#"<button type="button" class= "btn btn-danger">Remover</button></a></hr>
+      </div>
+      <br/>
     </div>
 
     total += A1.preco
@@ -25,17 +41,16 @@ Meu carrinho | {{ block.super }}
 
     <div class="container">
       <div class="row mt">
-        <div class="col-lg-8">
+        <div class="col-md-8">
 
           <right><hr><h3><b>Total:</b></h3><h1>{{ total }}</h1></hr></right>
         </div>
       </div>
     </div>
-    <--adicionar um botão de finalizar compra-->
       ​</div>
     </div>
     ​​
 
     ​{% endblock %}
 
-    <--falta configurar urls.py e views.py-->
+    <!--falta configurar urls.py e views.py-->
