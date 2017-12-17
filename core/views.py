@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Arte
 from .models import Usuario
-from .models import Imagens
 from .models import Categoria
 from .forms import CartaoModelForm
 from django.contrib.auth.forms import UserCreationForm
