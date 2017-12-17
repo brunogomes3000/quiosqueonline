@@ -6,10 +6,12 @@ from .forms import CartaoModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
 from .forms import ArteModelForm
+from .forms import EditArteModelForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -46,7 +48,6 @@ def index(request):
 
 def resultadobuscar(request):
 	categoria = Categoria.objects.all()
-	imagens = Imagens.objects.all()
 	page = request.GET.get('page', 1)
 
 
@@ -79,7 +80,6 @@ def resultadobuscar(request):
 	context = {
 		'categoria': categoria,
 		'artes': artes,
-		'imagens': imagens,
 	}
 
 	return render(request, 'ResultadoBuscar.html', context)
@@ -96,7 +96,6 @@ def arte_detalhes(request):
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
-	imagens = Imagens.objects.all()
 	usuario = Usuario.objects.all()
 	page = request.GET.get('page', 1)
 	paginator = Paginator(artes, 8)
@@ -110,7 +109,6 @@ def gerenciararte(request):
 
 	context = {
 		'artes': artes,
-		'imagens':imagens,
 		'usuario': usuario,
 
 	}
@@ -141,8 +139,16 @@ def editdadospessoais(request):
 
 def editarte(request):
 	id_arte = request.GET.get("id")
-	arte = Arte.objects.get(id=id_arte)
+	arte = Arte.objects.get(id = id_arte)
+	formEditArte = EditArteModelForm(request.POST or None, instance = arte)
+	if request.method == 'POST':
+		if formEditArte.is_valid():
+			arte.save()
+			return redirect('/editarte')
+
+	formEditArte = EditArteModelForm()
 	context = {
+		'formEditArte' : formEditArte,
 		'arte': arte
 	}
 	return render(request, 'editarte.html', context)
