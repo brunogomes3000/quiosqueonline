@@ -49,15 +49,20 @@ Meu Carrinho | {{ block.super }}
           <div class="row">
             
             <div class="col-md-6">
+              {% if request.GET.total %}
+              <div><h2>Total: R$ {{ request.GET.total }}</h2></div>
+
+              {% else %}
               <div><h2>Total: R$ {{ total }}</h2></div>
+              {% endif %}
             </div>
 
             <div class="col-md-3">
-              <a href="#"><button type="button" class= "btn btn-primary" role="button"><i class="fas fa-angle-double-left"></i> Comprar mais</button></a>
+              <a href="{% url 'resultadobuscar' %}"><button type="button" class= "btn btn-primary" role="button"><i class="fas fa-angle-double-left"></i> Comprar mais</button></a>
             </div>
 
             <div class="col-md-3">
-              <a href="#"><button type="button" class= "btn btn-success" role="button">Finalizar compra <i class="fas fa-shopping-cart"></i></button></a>
+              <a href="{% url 'finalizarcompra' %}"><button type="button" class= "btn btn-success" role="button">Finalizar compra <i class="fas fa-shopping-cart"></i></button></a>
             </div>
 
           </div>
