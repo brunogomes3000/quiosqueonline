@@ -29,6 +29,9 @@ Editar Arte | {{ block.super }}
             <h3><b>Preço</b></h3>
             <p>{{formEditArte.preco}}</p>
           </div>
+          {% if arte.id %}
+          <input type="hidden" name="id" value="{{ arte.id }}" />
+          {% endif %}
           <p><input type="submit" value="Enviar" /></p>
         </form>
       </div>

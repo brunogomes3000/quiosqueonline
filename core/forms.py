@@ -32,3 +32,10 @@ class CartaoModelForm(forms.ModelForm):
 	class Meta:
 		model = cartaoCredito
 		fields = ['numero', 'codSeguranca', 'nomeCartao', 'dataValidade']
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		for field in iter(self.fields):
+			self.fields[field].widget.attrs.update({
+				'class': 'form-control mr-sm-2'
+	    })
