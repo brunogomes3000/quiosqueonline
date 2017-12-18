@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 
 class cartaoCredito(models.Model):
-    numero = models.CharField('Número de cartão', max_length=16, null=True)
+    numero = models.CharField('Número de cartão', max_length=16, blank=True, null=True)
     codSeguranca = models.CharField('Código de segurança', max_length=3, null=True)
     nomeCartao = models.CharField('Nome', max_length=40, null=True)
     dataValidade = models.DateField('Data Vencimento')
@@ -12,9 +12,9 @@ class cartaoCredito(models.Model):
 class Usuario(models.Model):
     nome = models.CharField('Nome', max_length=15, null=True)
     sobrenome = models.CharField('Sobrenome', max_length=15, null=True)
-    email = models.EmailField('E-mail', primary_key=True, max_length=30)
-    senha = models.CharField('Senha', max_length=16, null=True)
-    cpfCnpj = models.CharField('CPF', max_length=11, null=True)
+    email = models.EmailField('E-mail', primary_key=True, max_length=30, blank=True)
+    senha = models.CharField('Senha', max_length=16, blank=True, null=True)
+    cpfCnpj = models.CharField('CPF', max_length=11, blank=True, null=True)
     cartao = models.ManyToManyField(cartaoCredito)
     def __str__(self):
 
@@ -36,29 +36,15 @@ class Categoria(models.Model):
         verbose_name_plural = 'Categorias'
 
 class Arte(models.Model):
-    descricao = models.CharField("Descrição", max_length=100, null=True)
+    descricao = models.CharField("Descrição", max_length=100, blank=True, null=True)
     dataCadastro = models.DateField('Data de cadastro', auto_now_add=True)
-    email = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
-    preco = models.FloatField("Preço", null=True)
-    imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
+    email = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=True, null=True)
+    preco = models.FloatField("Preço", blank=True, null=True)
+    imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', blank=True, null=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, blank=True, null=True)
     def __str__(self):
         return self.descricao
 
     class Meta:
         verbose_name = 'Arte'
         verbose_name_plural = 'Artes'
-
-
-class Imagens(models.Model):
-	imagem = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', null=True)
-	dataImagem = models.DateTimeField("Data da imagem", auto_now_add=True)
-	descricao = models.CharField("Descrição", max_length=100, null=True)
-	idArte = models.ForeignKey(Arte, on_delete=models.CASCADE, null=True)
-
-	def __str__(self):
-		return self.descricao
-
-	class Meta:
-		verbose_name = 'Imagem'
-		verbose_name_plural = 'Imagens'

@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from .models import Arte
 from .models import Usuario
-from .models import Imagens
 from .models import Categoria
 from .forms import CartaoModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
 from .forms import ArteModelForm
+from .forms import EditArteModelForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -47,7 +48,6 @@ def index(request):
 
 def resultadobuscar(request):
 	categoria = Categoria.objects.all()
-	imagens = Imagens.objects.all()
 	page = request.GET.get('page', 1)
 
 
@@ -80,7 +80,6 @@ def resultadobuscar(request):
 	context = {
 		'categoria': categoria,
 		'artes': artes,
-		'imagens': imagens,
 	}
 
 	return render(request, 'ResultadoBuscar.html', context)
@@ -97,7 +96,6 @@ def arte_detalhes(request):
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
-	imagens = Imagens.objects.all()
 	usuario = Usuario.objects.all()
 	page = request.GET.get('page', 1)
 	paginator = Paginator(artes, 8)
@@ -111,7 +109,6 @@ def gerenciararte(request):
 
 	context = {
 		'artes': artes,
-		'imagens':imagens,
 		'usuario': usuario,
 
 	}
@@ -120,10 +117,34 @@ def gerenciararte(request):
 
 def carrinho(request):
 
-	#puxar os produtos da sessão
-	#consultar todos os produtos no banco
-	#somar os valores de cada produto e salvar em uma variávei
-	#jogar em contexto os produtos e o valor total
+	lista_artes = []
+
+	if 'artes' in request.session:
+		lista_artes = request.session['artes']
+
+	if request.method == 'GET':
+		if 'op' in request.GET:
+			if request.GET.get("op") == 'adicionar':
+				if 'id' in request.GET:
+					id_arte = request.GET.get("id")
+					arte = Arte.objects.get(id=id_arte)
+					total = 0
+					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
+					request.session['artes'] = lista_artes
+					for preco in lista_artes:
+						total += arte.preco
+					return redirect('/carrinho')
+	elif request.GET.get("op") == 'remover':
+				if 'id' in request.GET:
+					id_arte_remover = request.GET.get("id")
+					cont = 0
+					for arte in lista_artes:
+						if arte[0] == id_arte_remover:
+							del lista_artes[cont]
+						cont+=1
+					request.session['artes'] = lista_artes
+					return redirect('/carrinho')
+
 	return render(request, 'carrinho.html')
 
 def finalizarcompra(request):
@@ -141,9 +162,18 @@ def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
 
 def editarte(request):
-	id_arte = request.GET.get("id")
-	arte = Arte.objects.get(id=id_arte)
+	id_arte = request.POST.get("id")
+	arte = Arte.objects.get(id = id_arte)
+	if request.method == 'POST':
+		formEditArte = EditArteModelForm(request.POST or None, instance = arte)
+		if formEditArte.is_valid():
+			arte.save()
+			return redirect('/gerenciararte')
+
+
+	formEditArte = EditArteModelForm()
 	context = {
+		'formEditArte' : formEditArte,
 		'arte': arte
 	}
 	return render(request, 'editarte.html', context)
