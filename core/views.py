@@ -129,12 +129,11 @@ def carrinho(request):
 					id_arte = request.GET.get("id")
 					arte = Arte.objects.get(id=id_arte)
 					total = 0
+					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
+					request.session['artes'] = lista_artes
 					for preco in lista_artes:
 						total += arte.preco
-					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url, total])
-					request.session['artes'] = lista_artes
 					return redirect('/carrinho')
-	
 	elif request.GET.get("op") == 'remover':
 				if 'id' in request.GET:
 					id_arte_remover = request.GET.get("id")
