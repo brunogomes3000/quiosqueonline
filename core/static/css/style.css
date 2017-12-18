@@ -228,6 +228,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #E08889;
 }
 
+.page-itemred.activered .page-linkred {
+    z-index: 2;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -410,7 +416,7 @@ h1, h2, h3, h4, h5, h6 {
   /* border: 1px solid #3079ed; */
   border: 0px;
   color: #fff;
-  text-shadow: 0 2px rgba(0,0,0,0.1); 
+  text-shadow: 0 2px rgba(0,0,0,0.1);
   background-color: #B30206;
   padding: 17px 0px;
   font-family: roboto;
@@ -434,7 +440,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   opacity: 0.6;
   transition: opacity ease 0.5s;
-} 
+}
 
 .login-help{
   font-size: 12px;
