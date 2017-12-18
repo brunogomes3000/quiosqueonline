@@ -176,17 +176,19 @@ def editdadospessoais(request):
 def editarte(request):
 	id_arte = request.POST.get("id")
 	arte = Arte.objects.get(id = id_arte)
+	formEditArte = EditArteModelForm(request.POST or None, instance = arte)
 	if request.method == 'POST':
-		formEditArte = EditArteModelForm(request.POST or None, instance = arte)
 		if formEditArte.is_valid():
 			arte.save()
 			return redirect('/gerenciararte')
 
 
 	formEditArte = EditArteModelForm()
+	id_arte = request.GET.get("id")
+	arte = Arte.objects.get(id = id_arte)
 	context = {
-		'formEditArte' : formEditArte,
-		'arte': arte
+		'formEditArte': formEditArte,
+		'arte': arte,
 	}
 	return render(request, 'editarte.html', context)
 
