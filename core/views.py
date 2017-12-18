@@ -117,10 +117,34 @@ def gerenciararte(request):
 
 def carrinho(request):
 
-	#puxar os produtos da sessão
-	#consultar todos os produtos no banco
-	#somar os valores de cada produto e salvar em uma variávei
-	#jogar em contexto os produtos e o valor total
+	lista_artes = []
+
+	if 'artes' in request.session:
+		lista_artes = request.session['artes']
+
+	if request.method == 'GET':
+		if 'op' in request.GET:
+			if request.GET.get("op") == 'adicionar':
+				if 'id' in request.GET:
+					id_arte = request.GET.get("id")
+					arte = Arte.objects.get(id=id_arte)
+					total = 0
+					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
+					request.session['artes'] = lista_artes
+					for preco in lista_artes:
+						total += arte.preco
+					return redirect('/carrinho')
+	elif request.GET.get("op") == 'remover':
+				if 'id' in request.GET:
+					id_arte_remover = request.GET.get("id")
+					cont = 0
+					for arte in lista_artes:
+						if arte[0] == id_arte_remover:
+							del lista_artes[cont]
+						cont+=1
+					request.session['artes'] = lista_artes
+					return redirect('/carrinho')
+
 	return render(request, 'carrinho.html')
 
 def finalizarcompra(request):
