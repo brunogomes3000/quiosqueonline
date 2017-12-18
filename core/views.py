@@ -145,7 +145,7 @@ def carrinho(request):
 						cont+=1
 					request.session['artes'] = lista_artes
 					return redirect('/carrinho?total={}'.format(totalCarrinho(request)))
-	total = totalCarrinho(request)	
+	total = totalCarrinho(request)
 	context = {
 		'total': total
 	}
@@ -153,7 +153,7 @@ def carrinho(request):
 
 
 def totalCarrinho(req):
-	lista_artes = req.session['artes'] 
+	lista_artes = req.session['artes']
 	total = 0
 	for arte in lista_artes:
 		total += arte[2]
@@ -174,23 +174,33 @@ def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
 
 def editarte(request):
-	id_arte = request.POST.get("id")
-	arte = Arte.objects.get(id = id_arte)
-	formEditArte = EditArteModelForm(request.POST or None, instance = arte)
 	if request.method == 'POST':
+		id_arte = request.POST.get("id")
+		arte = Arte.objects.get(id = id_arte)
+		formEditArte = EditArteModelForm(request.POST or None, instance = arte)
 		if formEditArte.is_valid():
 			arte.save()
 			return redirect('/gerenciararte')
-
-
 	formEditArte = EditArteModelForm()
-	id_arte = request.GET.get("id")
-	arte = Arte.objects.get(id = id_arte)
+	if request.method == 'GET':
+		id_arte = request.GET.get("id")
+		arte = Arte.objects.get(id = id_arte)
+		return redirect('/gerenciararte')
 	context = {
 		'formEditArte': formEditArte,
 		'arte': arte,
 	}
 	return render(request, 'editarte.html', context)
+
+def removerarte(request):
+	if request.method == 'GET':
+		id_arte = request.GET.get("id")
+		arte = Arte.objects.get(id = id_arte)
+		arte.delete()
+	context = {
+		'arte': arte,
+	}
+	return render(request, 'gerenciararte.html', context)
 
 def enviarArte(request):
 	if request.method == 'POST':
