@@ -118,7 +118,7 @@ def gerenciararte(request):
 def carrinho(request):
 
 	lista_artes = []
-
+	total = 0
 	if 'artes' in request.session:
 		lista_artes = request.session['artes']
 
@@ -128,13 +128,14 @@ def carrinho(request):
 				if 'id' in request.GET:
 					id_arte = request.GET.get("id")
 					arte = Arte.objects.get(id=id_arte)
-					total = 0
 					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
 					request.session['artes'] = lista_artes
-					for preco in lista_artes:
-						total += arte.preco
-					return redirect('/carrinho')
-	elif request.GET.get("op") == 'remover':
+					'''
+					for arte in lista_artes:
+						total += arte[2]
+					'''
+					return redirect('/carrinho?total={}'.format(totalCarrinho(request)))
+			elif request.GET.get("op") == 'remover':
 				if 'id' in request.GET:
 					id_arte_remover = request.GET.get("id")
 					cont = 0
@@ -143,9 +144,20 @@ def carrinho(request):
 							del lista_artes[cont]
 						cont+=1
 					request.session['artes'] = lista_artes
-					return redirect('/carrinho')
+					return redirect('/carrinho?total={}'.format(totalCarrinho(request)))
+	total = totalCarrinho(request)	
+	context = {
+		'total': total
+	}
+	return render(request, 'carrinho.html', context)
 
-	return render(request, 'carrinho.html')
+
+def totalCarrinho(req):
+	lista_artes = req.session['artes'] 
+	total = 0
+	for arte in lista_artes:
+		total += arte[2]
+	return total
 
 def finalizarcompra(request):
 	form = CartaoModelForm(request.POST or None)
