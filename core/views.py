@@ -95,7 +95,8 @@ def arte_detalhes(request):
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
-	usuario = Usuario.objects.all()
+	id_usuario = request.user
+	usuario = Usuario.objects.get(user=id_usuario)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(artes, 8)
 
@@ -204,10 +205,14 @@ def editarte(request):
 	return render(request, 'editarte.html', context)
 
 def enviarArte(request):
+	id_usuario = request.user
+	usuario = Usuario.objects.get(user=id_usuario)
+
 	if request.method == 'POST':
 		formArte = ArteModelForm(request.POST, request.FILES)
 		if formArte.is_valid():
 			arte = formArte.save(commit=False)
+			arte.usuario = usuario
 			arte.save()
 			return redirect('/gerenciararte')
 
