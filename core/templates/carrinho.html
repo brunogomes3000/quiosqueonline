@@ -29,7 +29,7 @@ Meu Carrinho | {{ block.super }}
         </div>
 
         <div class="col-md-3">
-          <a href="{% url 'carrinho' %}?op=remover&id={{artes.0}}"><button type="button" class= "btn btn-danger" role="button">Remover <i class="fas fa-trash"></i></button></a>
+          <a href="{% url 'carrinho' %}?op=remover&id={{artes.0}}" class= "btn btn-danger" role="button"> Remover <i class="fas fa-trash"></i></a>
         </div>
       </div>
     </div>
@@ -58,16 +58,16 @@ Meu Carrinho | {{ block.super }}
             </div>
 
             <div class="col-md-3">
-              <a href="{% url 'resultadobuscar' %}"><button type="button" class= "btn btn-primary" role="button"><i class="fas fa-angle-double-left"></i> Comprar mais</button></a>
+              <a href="{% url 'resultadobuscar' %}" class= "btn btn-primary" role="button"><i class="fas fa-angle-double-left"></i> Comprar mais </a>
             </div>
 
               {% if request.session.artes %}
             <div class="col-md-3">
-              <a href="{% url 'finalizarcompra' %}"><button type="button" class= "btn btn-success" role="button">Finalizar compra <i class="fas fa-shopping-cart"></i></button></a>
+              <a href="{% url 'finalizarcompra' %}?total={{ total }}" class= "btn btn-success" role="button"> Finalizar compra <i class="fas fa-shopping-cart"></i></a>
             </div>
               {% else %}
             <div class="col-md-3">
-              <a href="{% url 'resultadobuscar' %}"><button type="button" class= "btn btn-secondary" role="button">Finalizar compra <i class="fas fa-shopping-cart"></i></button></a>
+              <a href="{% url 'resultadobuscar' %}" class= "btn btn-secondary" role="button"> Finalizar compra <i class="fas fa-shopping-cart"></i></a>
             </div>
               {% endif %}
           </div>

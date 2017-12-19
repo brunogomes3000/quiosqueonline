@@ -94,11 +94,11 @@ MEDIA_URL = '/media/'
 
 #Enviar email
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'jordevalucas@gmail.com'
-EMAIL_HOST_PASSWORD = 'deusecapaz2011'
+EMAIL_HOST_USER = 'quiosqueonline17@gmail.com'
+EMAIL_HOST_PASSWORD = 'quiosque123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'genilson.pontesjr@gmail.com'
+DEFAULT_FROM_EMAIL = 'quiosqueonline17@gmail.com'
 
 #depois q faz login ele redireciona para a página inicial
 LOGIN_REDIRECT_URL = 'index'

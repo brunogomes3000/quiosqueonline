@@ -174,33 +174,36 @@ def totalCarrinho(req):
 		total = 0
 	return total
 
+def todasAsArtes(req):
+	if 'artes' in req.session:
+		lista_artes = req.session['artes']
+	return lista_artes
+
 def finalizarcompra(request):
 	id_usuario = request.user
 	usuario = Usuario.objects.get(user=id_usuario)
 	form = CartaoModelForm(request.POST or None)
+	lista_artes = todasAsArtes(request)
+	vlTotal = totalCarrinho(request)
+	nomesArtes = ""
 
 	context = {
 		'form': form,
 		'usuario': usuario,
+		'lista_artes': lista_artes,
+		'vlTotal': vlTotal,
 	}
-
-	'''if request.method == 'POST':
-		if form.is_valid():
-			email = usuario.user.email
-			nome = usuario.user.username
-			mensagem_completa = 'Oi, {0}, você acaba de adquirir os direitos de uso da(s) seguinte(s) arte(s): \n'.format(nome)
-			send_mail('Confirmação de compra', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
-			cartao = form.save(commit=False)
-			cartao.usuario = usuario
-			cartao.save()
-			return redirect('/gerenciararte')'''
 
 	if request.method == 'POST':
 		if form.is_valid():
+			for artes in lista_artes:
+				nomesArtes = nomesArtes + '\n- ' + artes[1]
+
 			email = usuario.user.email
-			nome = usuario.user.username
-			mensagem_completa = 'Oi, {0}, você acaba de adquirir os direitos de uso da(s) seguinte(s) arte(s): \n'.format(nome)
-			send_mail('Confirmação de compra', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [email])
+			nome = usuario.user.first_name
+			nome2 = usuario.user.last_name
+			mensagem_completa = 'Olá, {0} {1}!\nVocê acaba de adquirir em nosso site os direitos de uso da(s) seguinte(s) arte(s): \n\n{2}\n\nValor total: R$ {3} \n\n\nSe não foi você quem fez essa compra, quem sabe morre'.format(nome, nome2, nomesArtes, vlTotal) 
+			send_mail('Confirmação de compra | Quiosque Online', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [email])
 			cartao = form.save(commit=False)
 			cartao.usuario = usuario
 			cartao.save()

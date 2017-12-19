@@ -32,8 +32,7 @@ Identificação | {{ block.super }}
                         <label class="col-form-label" for="formGroupExampleInput" desable><h4>{{ user.email }}</h4></label>
                     </div>
                     <div class="member">
-                        <p align="right"><a href="{% url 'editdadospessoais' %}" class="btn btn-outline-danger" role="button" aria-pressed="true"> Editar </a>
-                        <a href="#portfolio.class2" class="btn btn-outline-secondary" role="button" aria-pressed="true"> Seguir </a></p>
+                        <p align="right"><a href="#portfolio.class2" class="btn btn-outline-success" role="button" aria-pressed="true"> Seguir </a></p>
                     </div>
                 </form>       
             </div>
@@ -48,9 +47,9 @@ Identificação | {{ block.super }}
     <div class="container wow fadeInUp">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-title">Formas de Pagemento</h3>
+                <h3 class="section-title">Formas de Pagamento</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description"></p>
+                <p class="section-description">Para finalizar a compra, escolha uma das formas de apagamento abaixo</p>
             </div>
         </div>
         <div class="row">
@@ -92,7 +91,6 @@ Identificação | {{ block.super }}
                                 <p>{{form.codSeguranca.label}}: {{form.codSeguranca}} </p>
                                 <p>{{form.nomeCartao.label}}: {{form.nomeCartao}} </p>
                                 <p>{{form.dataValidade.label}}: {{form.dataValidade}} </p>
-                                <input type = "text" id = "currency"/> 
 
                                 <p align="right"><input class="btn btn-outline-danger" role="button" aria-pressed="true" type="submit" value="Finalizar Compra" /></p>
                             </form>
