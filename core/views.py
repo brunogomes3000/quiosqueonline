@@ -13,6 +13,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -182,14 +184,30 @@ def finalizarcompra(request):
 		'usuario': usuario,
 	}
 
-	if request.method == 'POST':
+	'''if request.method == 'POST':
 		if form.is_valid():
+			email = usuario.user.email
+			nome = usuario.user.username
+			mensagem_completa = 'Oi, {0}, você acaba de adquirir os direitos de uso da(s) seguinte(s) arte(s): \n'.format(nome)
+			send_mail('Confirmação de compra', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
 			cartao = form.save(commit=False)
 			cartao.usuario = usuario
 			cartao.save()
-			return redirect('/gerenciararte')
-			
+			return redirect('/gerenciararte')'''
+
+	if request.method == 'POST':
+		if form.is_valid():
+			email = usuario.user.email
+			nome = usuario.user.username
+			mensagem_completa = 'Oi, {0}, você acaba de adquirir os direitos de uso da(s) seguinte(s) arte(s): \n'.format(nome)
+			send_mail('Confirmação de compra', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [email])
+			cartao = form.save(commit=False)
+			cartao.usuario = usuario
+			cartao.save()
+			return redirect('/gerenciararte')			
 	return render(request, 'finalizarcompra.html', context)
+
+
 
 def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
