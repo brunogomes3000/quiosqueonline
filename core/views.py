@@ -135,13 +135,15 @@ def carrinho(request):
 			if request.GET.get("op") == 'adicionar':
 				if 'id' in request.GET:
 					id_arte = request.GET.get("id")
+					contador = 0
+					for arte in lista_artes:
+						if arte[0] == id_arte:
+							return redirect('/carrinho')
+				
+					'''id_arte = request.GET.get("id")'''
 					arte = Arte.objects.get(id=id_arte)
 					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
 					request.session['artes'] = lista_artes
-					'''
-					for arte in lista_artes:
-						total += arte[2]
-					'''
 					return redirect('/carrinho?total={}'.format(totalCarrinho(request)))
 			elif request.GET.get("op") == 'remover':
 				if 'id' in request.GET:
