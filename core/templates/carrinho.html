@@ -15,9 +15,8 @@ Meu Carrinho | {{ block.super }}
         <div class="section-title-divider"></div>
       </div>
     </div>
-    ​​
+    ​​<hr>
     {% for artes in request.session.artes %}
-
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -34,6 +33,7 @@ Meu Carrinho | {{ block.super }}
         </div>
       </div>
     </div>
+    <hr>
     {% empty %}
       <div class="container">
         <div class="row">
@@ -47,7 +47,7 @@ Meu Carrinho | {{ block.super }}
 
     <div class="container">
           <div class="row">
-            
+
             <div class="col-md-6">
               {% if request.GET.total %}
               <div><h2>Total: R$ {{ request.GET.total }}</h2></div>

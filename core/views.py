@@ -4,6 +4,7 @@ from .models import Usuario
 from .models import Categoria
 from .forms import CartaoModelForm
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UserModelForm
 from .forms import UsuarioModelForm
 from .forms import ArteModelForm
 from .forms import EditArteModelForm
@@ -18,31 +19,28 @@ from django.shortcuts import get_object_or_404
 def index(request):
 	Artes = Arte.objects.all().order_by('-id')[:3]
 
-	form = UserCreationForm (request.POST or None)
-	form2 = UsuarioModelForm(request.POST or None)
 
+	formUser = UserModelForm(request.POST or None)
+	formCPF = UsuarioModelForm(request.POST or None)
+	form = UserCreationForm(request.POST or None)
 	context = {
-		'form': form,
-		'form2': form2,
-
+		'formUser': formUser,
+		'formCPF': formCPF,
+		'form': form
 	}
-
 	if request.method == 'POST':
-		if form.is_valid():
-			user_post = UserCreationForm(request.POST)
-			user = user_post.save(commit=False)
-			user.set_password(user_post.cleaned_data['password'])
-			user.save()
-			if form2.is_valid():
-				usuario_post = UsuarioModelForm(request.POST)
-				usuario = usuario_post.save(commit=False)
-				usuario.user = user
-				usuario.save()
-			return redirect('/index')
-			form.save()
-
-
-
+		if form.is_valid() and formUser.is_valid():
+			usuario_post = UserCreationForm(request.POST)
+			usuario = usuario_post.save(commit=False)
+			usuario.first_name = formUser.cleaned_data['first_name']
+			usuario.last_name = formUser.cleaned_data['last_name']
+			usuario.email = formUser.cleaned_data['email']
+			usuario.save()
+			if formCPF.is_valid():
+				cpf_post = UsuarioModelForm(request.POST)
+				cpf = cpf_post.save(commit=False)
+				cpf.user  = usuario
+				cpf.save()
 	return render (request, 'index.html', context)
 
 
@@ -64,10 +62,10 @@ def resultadobuscar(request):
 		artest =  Arte.objects.filter(descricao__icontains=nomeget, categoria__id__in=categoriaget)
 
 
-		paginator = Paginator(artest, 8)
+		paginator = Paginator(artest, 12)
 	else:
 		artest = Arte.objects.all()
-		paginator = Paginator(artest, 8)
+		paginator = Paginator(artest, 12)
 	try:
 		artes = paginator.page(page)
 	except 	PageNotAnInteger:
@@ -80,6 +78,7 @@ def resultadobuscar(request):
 	context = {
 		'categoria': categoria,
 		'artes': artes,
+		'nomeget' : nomeget
 	}
 
 	return render(request, 'ResultadoBuscar.html', context)
@@ -139,7 +138,7 @@ def carrinho(request):
 					for arte in lista_artes:
 						if arte[0] == id_arte:
 							return redirect('/carrinho')
-				
+
 					'''id_arte = request.GET.get("id")'''
 					arte = Arte.objects.get(id=id_arte)
 					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
