@@ -163,10 +163,13 @@ def carrinho(request):
 
 
 def totalCarrinho(req):
-	lista_artes = req.session['artes']
-	total = 0
-	for arte in lista_artes:
-		total += arte[2]
+	if 'artes' in req.session:
+		lista_artes = req.session['artes']
+		total = 0
+		for arte in lista_artes:
+			total += arte[2]
+	else:
+		total = 0
 	return total
 
 def finalizarcompra(request):
