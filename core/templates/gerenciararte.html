@@ -17,16 +17,27 @@ Minhas Artes | {{ block.super }}
 		</div>
 
 		<div class="row">
+
 			{% for arte in artes %}
 			<div class="col-md-3">
 				<div class="member">
 					<div class="pic"><img class="img-tumbnail" src="{{arte.imagem_principal.url}}" alt=""></div>
-					<a href="{% url 'editarte' %}?id={{arte.id}}" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-pencil-alt"></i></a>
+					<a href="{% url 'editarte' %}?id={{arte.id}}" class="btn btn-danger" role="button" aria-pressed="true"><i class="fas fa-pencil-alt"></i></a>
+					<a href="{% url 'gerenciararte' %}?op=remover&id={{arte.id}}" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-trash-alt"></i></a>
 				</div>
 			</div>
 			{% empty %}
 			<p>Nenhuma arte cadastrada</p>
 			{% endfor %}
+
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Adicionar nova Arte</h4>
+						<a href="{% url 'enviarArte' %}" class="card-link btn btn-success"><b>ADICIONAR</b></a>
+					</div>
+				</div>
+			</div>
 		</div>
 		<ul class="pagination justify-content-center">
 			<li class="page-item">

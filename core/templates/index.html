@@ -29,15 +29,24 @@ Página Inicial | {{ block.super }}
 			</h1>
 			<div class="section-title-divider"></div>
 			<br>
-			<form action="​{% url 'index' %}​" method="post">
+			{% for field in formUser %}
+			{% if field.errors %}
+			<div class="alert alert-danger">
+				{{ field.errors }}
+				{{ field.label}}
+			</div>
+			{% endif %}
+			{% endfor %}
+
+			<form action="{% url 'index' %}" method="post">
 				{% csrf_token %}
-				{{form2.nome.label}}:<br/> {{form2.nome}}​
-				{{form2.sobrenome.label}}:<br/> {{form2.sobrenome}}​
-				{{form2.cpfCnpj.label}}:<br/> {{form2.cpfCnpj}}​
+				{{formUser.first_name.label}}:<br/> {{formUser.first_name}}​
+				{{formUser.last_name.label}}:<br/> {{formUser.last_name}}​
+				{{formUser.email.label}}:<br/> {{formUser.email}}
+				{{formCPF.cpfCnpj.label}}:<br/> {{formCPF.cpfCnpj}}​
 				{{form.username.label}}:<br/> {{form.username}}​
-				{{form2.email.label}}:<br/> {{form2.email}}​
-				{{form.password1.label}}: <br> {{form.password1}}​
-				{{form.password2.label}}: <br> {{form.password2}}​
+				{{form.password1.label}}: <br/> {{form.password1}}​
+				{{form.password2.label}}: <br/> {{form.password2}}​
 				<input type="submit" name="registro" class="login loginmodal-submit" value="Criar Conta">
 			</form>
 		</div>

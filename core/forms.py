@@ -4,6 +4,7 @@ from .models import Usuario
 from .models import Arte
 from .models import Categoria
 from .models import cartaoCredito
+from django.contrib.auth.models import User
 
 class autenticacao(forms.Form):
 	email = forms.CharField()
@@ -12,11 +13,16 @@ class autenticacao(forms.Form):
 		super(au, self).__init__()
 		self.arg = arg
 
+class UserModelForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = ['first_name', 'last_name', 'email', 'username']
+
 class UsuarioModelForm(forms.ModelForm):
 
 	class Meta:
 		model = Usuario
-		fields = ['nome', 'sobrenome', 'cpfCnpj' , 'email', 'senha']
+		fields = ['cpfCnpj']
 
 class ArteModelForm(forms.ModelForm):
     class Meta:
@@ -28,7 +34,7 @@ class EditArteModelForm(forms.ModelForm):
 		model = Arte
 		fields = ['descricao', 'preco']
 
-class CartaoModelForm(forms.ModelForm):	
+class CartaoModelForm(forms.ModelForm):
 	class Meta:
 		model = cartaoCredito
 		fields = ['numero', 'codSeguranca', 'nomeCartao', 'dataValidade']

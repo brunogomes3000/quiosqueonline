@@ -10,15 +10,13 @@ class cartaoCredito(models.Model):
 
 
 class Usuario(models.Model):
-    nome = models.CharField('Nome', max_length=15, null=True)
-    sobrenome = models.CharField('Sobrenome', max_length=15, null=True)
-    email = models.EmailField('E-mail', primary_key=True, max_length=30, blank=True)
-    senha = models.CharField('Senha', max_length=16, blank=True, null=True)
-    cpfCnpj = models.CharField('CPF', max_length=11, blank=True, null=True)
-    cartao = models.ManyToManyField(cartaoCredito)
+    cpfCnpj = models.CharField('CPF', max_length=11, null=True)
+    cartao = models.ManyToManyField(cartaoCredito, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+
     def __str__(self):
 
-        return self.nome
+        return self.cpfCnpj
 
     class Meta:
         verbose_name = 'Usuario'

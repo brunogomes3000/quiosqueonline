@@ -8,7 +8,15 @@ Enviar Arte | {{ block.super }}
 {% block conteudo %}
 <section id="portfolio">
 	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="section-title">Adicionar uma nova Arte</h3>
+				<div class="section-title-divider"></div>
+			</div>
+		</div>
+
 		<div class="row mt">
+
 
 			{% for field in formArte %}
 			{% if field.errors %}
@@ -24,15 +32,13 @@ Enviar Arte | {{ block.super }}
 
 				<h4><b>Nome da arte</b></h4>
 				<p>{{formArte.descricao}}</p>
-				<h4><b>{{formArte.email.label}}</b></h4>
-				<p>{{formArte.email}}</p>
 				<h4><b>{{formArte.preco.label}}</b></h4>
 				<p>{{formArte.preco}}</p>
 				<h4><b>{{formArte.imagem_principal.label}}</b></h4>
 				<p>{{formArte.imagem_principal}}</p>
 				<h4><b>{{formArte.categoria.label}}</b></h4>
 				<p>{{formArte.categoria}}</p>
-				<p><input type="submit" value="Enviar" /></p>
+				<input class = "btn btn-danger" type="submit" value="Enviar" />
 			</form>
 
 		</div>
