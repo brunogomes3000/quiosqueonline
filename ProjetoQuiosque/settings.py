@@ -92,6 +92,14 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'core', 'media')
 MEDIA_URL = '/media/'
 
+#Enviar email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jordevalucas@gmail.com'
+EMAIL_HOST_PASSWORD = 'deusecapaz2011'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'genilson.pontesjr@gmail.com'
+
 #depois q faz login ele redireciona para a página inicial
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL ='login'
