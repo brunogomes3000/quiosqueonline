@@ -83,28 +83,25 @@
         <a class="nav-link" href="{% url 'sobre' %}"> Sobre </a>
       </li>
     </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'carrinho' %}"> Meu Carrinho <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'usuario' %}"> Gerenciar Perfil <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'sobre' %}"> Sobre </a>
-    </li>
   </ul>
   <ul class="navbar-nav navbar-inclie">
-    
+
+
+    {% if user.is_authenticated %}
     <li class="nav-item active">
-      {% if user.is_authenticated %}
       <span class="navbar-text">
-      Olá, {{user}}
+        Olá, {{user}}
       </span>
-      <a href="{% url 'logout'%}">Sair</a>
-      {% else %}
-      <a href="{% url 'login' %}">Entrar</a>
-      {% endif %}
     </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'logout'%}">Sair</a>
+    </li>
+    {% else %}
+    <li class="nav-item active">
+      <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">Entrar</a>
+    </li>
+    {% endif %}
+
   </ul>
   <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'resultadobuscar' %}">
 
@@ -135,6 +132,26 @@ Hero Section
   </div>
 </section>
 
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content loginmodal-container">
+      <h1>
+        Faça login com sua conta
+      </h1>
+      <br>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="user" placeholder="Username">
+        <a href="#">Esqueci a senha</a>
+        <input type="password" name="pass" placeholder="Password">
+        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+      </form>
+      <div class="login-help">
+        <a href="#" data-toggle="modal" data-target="#register-modal"> Registrar-se </a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 <!--==========================
 Footer

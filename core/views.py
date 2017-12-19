@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from .models import Arte
 from .models import Usuario
-from .models import Imagens
 from .models import Categoria
+from .forms import CartaoModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UsuarioModelForm
 from .forms import ArteModelForm
+from .forms import EditArteModelForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -47,7 +48,6 @@ def index(request):
 
 def resultadobuscar(request):
 	categoria = Categoria.objects.all()
-	imagens = Imagens.objects.all()
 	page = request.GET.get('page', 1)
 
 
@@ -80,7 +80,6 @@ def resultadobuscar(request):
 	context = {
 		'categoria': categoria,
 		'artes': artes,
-		'imagens': imagens,
 	}
 
 	return render(request, 'ResultadoBuscar.html', context)
@@ -97,7 +96,6 @@ def arte_detalhes(request):
 
 def gerenciararte(request):
 	artes = Arte.objects.all()
-	imagens = Imagens.objects.all()
 	usuario = Usuario.objects.all()
 	page = request.GET.get('page', 1)
 	paginator = Paginator(artes, 8)
@@ -111,7 +109,6 @@ def gerenciararte(request):
 
 	context = {
 		'artes': artes,
-		'imagens':imagens,
 		'usuario': usuario,
 
 	}
@@ -120,37 +117,94 @@ def gerenciararte(request):
 
 def carrinho(request):
 
-	#puxar os produtos da sessão
-	#consultar todos os produtos no banco
-	#somar os valores de cada produto e salvar em uma variávei
-	#jogar em contexto os produtos e o valor total
-	return render(request, 'carrinho.html')
+	lista_artes = []
+	total = 0
+	if 'artes' in request.session:
+		lista_artes = request.session['artes']
+
+	if request.method == 'GET':
+		if 'op' in request.GET:
+			if request.GET.get("op") == 'adicionar':
+				if 'id' in request.GET:
+					id_arte = request.GET.get("id")
+					arte = Arte.objects.get(id=id_arte)
+					lista_artes.append([id_arte, arte.descricao, arte.preco, arte.imagem_principal.url])
+					request.session['artes'] = lista_artes
+					'''
+					for arte in lista_artes:
+						total += arte[2]
+					'''
+					return redirect('/carrinho?total={}'.format(totalCarrinho(request)))
+			elif request.GET.get("op") == 'remover':
+				if 'id' in request.GET:
+					id_arte_remover = request.GET.get("id")
+					cont = 0
+					for arte in lista_artes:
+						if arte[0] == id_arte_remover:
+							del lista_artes[cont]
+						cont+=1
+					request.session['artes'] = lista_artes
+					return redirect('/carrinho?total={}'.format(totalCarrinho(request)))
+	total = totalCarrinho(request)	
+	context = {
+		'total': total
+	}
+	return render(request, 'carrinho.html', context)
+
+
+def totalCarrinho(req):
+	lista_artes = req.session['artes'] 
+	total = 0
+	for arte in lista_artes:
+		total += arte[2]
+	return total
 
 def finalizarcompra(request):
-	return render(request, 'finalizarcompra.html')
+	form = CartaoModelForm(request.POST or None)
+	context = {
+		'form': form,
+	}
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+			return redirect('/finalizarcompra')
+	return render(request, 'finalizarcompra.html', context)
 
 def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
 
 def editarte(request):
+	id_arte = request.POST.get("id")
+	arte = Arte.objects.get(id = id_arte)
+	formEditArte = EditArteModelForm(request.POST or None, instance = arte)
+	if request.method == 'POST':
+		if formEditArte.is_valid():
+			arte.save()
+			return redirect('/gerenciararte')
+
+
+	formEditArte = EditArteModelForm()
 	id_arte = request.GET.get("id")
-	arte = Arte.objects.get(id=id_arte)
+	arte = Arte.objects.get(id = id_arte)
 	context = {
-		'arte': arte
+		'formEditArte': formEditArte,
+		'arte': arte,
 	}
 	return render(request, 'editarte.html', context)
 
 def enviarArte(request):
-	formArte = ArteModelForm(request.POST or None)
-	context = {
-	'formArte' : formArte
-	}
 	if request.method == 'POST':
+		formArte = ArteModelForm(request.POST, request.FILES)
 		if formArte.is_valid():
-			arte_post = ArteModelForm(request.POST)
-			arte = arte_post.save(commit=False)
+			arte = formArte.save(commit=False)
 			arte.save()
 			return redirect('/gerenciararte')
+
+	formArte = ArteModelForm()
+	context = {
+		'formArte' : formArte,
+
+	}
 	return render( request, 'enviarArte.html', context)
 
 def usuario(request):
@@ -164,4 +218,3 @@ def usuario (request):
 
 def sobre(request):
 	return render( request, 'sobre.html')
-

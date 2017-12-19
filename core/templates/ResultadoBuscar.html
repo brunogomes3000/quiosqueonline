@@ -54,9 +54,10 @@ Resultado da Busca | {{ block.super }}
             <h4>{{arte.descricao}}</h4>
           </div>
         </a>
-        {% empty %}
-        <p>Nenhuma arte cadastrada</p>
       </div>
+      {% empty %}
+      <p>Nenhuma arte cadastrada</p>
+
       {% endfor %}
 
     </div>
@@ -95,6 +96,7 @@ Resultado da Busca | {{ block.super }}
 
       {% endif %}
     </ul>
+  </div>
   </section>
 
 

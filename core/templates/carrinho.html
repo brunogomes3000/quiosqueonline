@@ -1,41 +1,77 @@
 {% extends "base.html" %}
-{% load static %}
-
+{% load static%}
 
 {% block titulo %}
-Meu carrinho | {{ block.super }}
+Meu Carrinho | {{ block.super }}
 {% endblock %}
 
 {% block conteudo %}
 
-<div class="container">​
-  <div class="row mt">
-    ​​
-    {% for A1 in Artes %}
-    <div class="container">
-      <div class="col-lg-8">
-
-        <hr><h3><b>Nome da Arte:</b></h3><h1>{{ A1.descricao }}</h1></hr>
-        <hr><h3><b>Preço:</b></h3><h1>{{ A1.preco }}</h1></hr>
+<section id="team">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">Meu Carrinho</h3>
+        <div class="section-title-divider"></div>
       </div>
     </div>
-
-    total += A1.preco
-    {% endfor %}
+    ​​
+    {% for artes in request.session.artes %}
 
     <div class="container">
-      <div class="row mt">
-        <div class="col-lg-8">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="pic"><a href ="{% url 'arte_detalhes' %}?id={{artes.0}}"><img src="{{artes.3}}" width="200" hspace="15"/></a></div>
+        </div>
 
-          <right><hr><h3><b>Total:</b></h3><h1>{{ total }}</h1></hr></right>
+        <div class="col-md-5">
+          <h4><b>Nome da Arte:</b></h4><h2> {{ artes.1 }}</h2>
+          <h4><b>Preço:</b></h4><h2>R$ {{ artes.2 }}</h2>
+        </div>
+
+        <div class="col-md-3">
+          <a href="{% url 'carrinho' %}?op=remover&id={{artes.0}}"><button type="button" class= "btn btn-danger" role="button">Remover <i class="fas fa-trash"></i></button></a>
         </div>
       </div>
     </div>
-    <--adicionar um botão de finalizar compra-->
+    {% empty %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3> Não há artes no Carrinho! </h3>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+    <div class="container">
+          <div class="row">
+            
+            <div class="col-md-6">
+              {% if request.GET.total %}
+              <div><h2>Total: R$ {{ request.GET.total }}</h2></div>
+
+              {% else %}
+              <div><h2>Total: R$ {{ total }}</h2></div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-3">
+              <a href="{% url 'resultadobuscar' %}"><button type="button" class= "btn btn-primary" role="button"><i class="fas fa-angle-double-left"></i> Comprar mais</button></a>
+            </div>
+
+            <div class="col-md-3">
+              <a href="{% url 'finalizarcompra' %}"><button type="button" class= "btn btn-success" role="button">Finalizar compra <i class="fas fa-shopping-cart"></i></button></a>
+            </div>
+
+          </div>
+        </div>
       ​</div>
     </div>
     ​​
 
     ​{% endblock %}
-
-    <--falta configurar urls.py e views.py-->
+  </div>
+</section>
+    <!--falta configurar urls.py e views.py-->

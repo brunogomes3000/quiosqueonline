@@ -10,7 +10,16 @@ Enviar Arte | {{ block.super }}
 	<div class="container">
 		<div class="row mt">
 
-			<form action="{% url 'enviarArte' %}" method="post">
+			{% for field in formArte %}
+			{% if field.errors %}
+			<div class="alert alert-danger">
+				<p>{{ field.label }}:	{{ field.errors }}</p>
+			</div>
+			{% endif %}
+			{% endfor %}
+
+
+			<form action="{% url 'enviarArte' %}" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 
 				<h4><b>Nome da arte</b></h4>
@@ -24,7 +33,7 @@ Enviar Arte | {{ block.super }}
 				<h4><b>{{formArte.categoria.label}}</b></h4>
 				<p>{{formArte.categoria}}</p>
 				<p><input type="submit" value="Enviar" /></p>
-				</form>
+			</form>
 
 		</div>
 	</div>

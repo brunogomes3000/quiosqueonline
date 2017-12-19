@@ -21,7 +21,6 @@ Minhas Artes | {{ block.super }}
 			<div class="col-md-3">
 				<div class="member">
 					<div class="pic"><img class="img-tumbnail" src="{{arte.imagem_principal.url}}" alt=""></div>
-					<a href="#" class="btn btn-outline-danger" role="button" aria-pressed="true"><i class="fas fa-trash"></i> Excluir </a>
 					<a href="{% url 'editarte' %}?id={{arte.id}}" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-pencil-alt"></i></a>
 				</div>
 			</div>
@@ -40,7 +39,7 @@ Minhas Artes | {{ block.super }}
 			</li>
 			{% for ar in artes.paginator.page_range %}
 			{% if artes.number == ar %}​
-			<li class="page-item active"><a class="page-link"><span>{{ ar }}<span class="sr-only">(current)</span></span></a></li>
+			<li class="page-item activered"><a class="page-link"><span>{{ ar }}<span class="sr-only">(current)</span></span></a></li>
 			{% else %}
 			<li class="page-item">
 				<a class="page-link" href="?page={{ ar }}">{{ ar }}</a>
