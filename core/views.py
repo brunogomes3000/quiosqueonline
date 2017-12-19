@@ -170,14 +170,22 @@ def totalCarrinho(req):
 	return total
 
 def finalizarcompra(request):
+	id_usuario = request.user
+	usuario = Usuario.objects.get(user=id_usuario)
 	form = CartaoModelForm(request.POST or None)
+
 	context = {
 		'form': form,
+		'usuario': usuario,
 	}
+
 	if request.method == 'POST':
 		if form.is_valid():
-			form.save()
-			return redirect('/finalizarcompra')
+			cartao = form.save(commit=False)
+			cartao.usuario = usuario
+			cartao.save()
+			return redirect('/gerenciararte')
+			
 	return render(request, 'finalizarcompra.html', context)
 
 def editdadospessoais(request):
