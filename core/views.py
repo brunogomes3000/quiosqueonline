@@ -100,6 +100,14 @@ def gerenciararte(request):
 	page = request.GET.get('page', 1)
 	paginator = Paginator(artes, 8)
 
+	if request.method == 'GET':
+		if 'op' in request.GET:
+			if request.GET.get("op") == 'remover':
+				if 'id' in request.GET:
+					id_arte = request.GET.get("id")
+					arte = Arte.objects.get(id = id_arte)
+					arte.delete()
+
 	try:
 		artes = paginator.page(page)
 	except 	PageNotAnInteger:
@@ -185,22 +193,11 @@ def editarte(request):
 	if request.method == 'GET':
 		id_arte = request.GET.get("id")
 		arte = Arte.objects.get(id = id_arte)
-		return redirect('/gerenciararte')
 	context = {
 		'formEditArte': formEditArte,
 		'arte': arte,
 	}
 	return render(request, 'editarte.html', context)
-
-def removerarte(request):
-	if request.method == 'GET':
-		id_arte = request.GET.get("id")
-		arte = Arte.objects.get(id = id_arte)
-		arte.delete()
-	context = {
-		'arte': arte,
-	}
-	return render(request, 'gerenciararte.html', context)
 
 def enviarArte(request):
 	if request.method == 'POST':
