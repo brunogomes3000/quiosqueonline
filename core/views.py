@@ -94,7 +94,7 @@ def arte_detalhes(request):
 	return render(request,'arte_detalhes.html', context)
 
 
-
+@login_required(login_url='login')
 def gerenciararte(request):
 	artes = Arte.objects.all()
 	id_usuario = request.user
@@ -179,6 +179,7 @@ def todasAsArtes(req):
 		lista_artes = req.session['artes']
 	return lista_artes
 
+@login_required(login_url='login')
 def finalizarcompra(request):
 	id_usuario = request.user
 	usuario = Usuario.objects.get(user=id_usuario)
@@ -210,11 +211,11 @@ def finalizarcompra(request):
 			return redirect('/gerenciararte')			
 	return render(request, 'finalizarcompra.html', context)
 
-
-
+@login_required(login_url='login')
 def editdadospessoais(request):
 	return render(request, 'editdadospessoais.html')
 
+@login_required(login_url='login')
 def editarte(request):
 	if request.method == 'POST':
 		id_arte = request.POST.get("id")
@@ -233,6 +234,7 @@ def editarte(request):
 	}
 	return render(request, 'editarte.html', context)
 
+@login_required(login_url='login')
 def enviarArte(request):
 	id_usuario = request.user
 	usuario = Usuario.objects.get(user=id_usuario)
@@ -251,10 +253,6 @@ def enviarArte(request):
 
 	}
 	return render( request, 'enviarArte.html', context)
-
-def usuario(request):
-	return render( request, 'usuario.html')
-
 
 
 @login_required(login_url='login')

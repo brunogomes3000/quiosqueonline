@@ -13,9 +13,14 @@ Página Inicial | {{ block.super }}
 
 			<h1>Bem vindo ao QUIOSQUE ONLINE</h1>
 			<h2>Faça seu Cadastro ou Login</h2>
+
 			<div class="actions">
+				{% if user.is_authenticated %}
+				<a href="{% url 'resultadobuscar' %}" class="btn-get-started">ACESSAR ARTES</a>
+				{% else %}
 				<a href="#" class="btn-get-started" data-toggle="modal" data-target="#register-modal">FAZER CADASTRO</a>
-				<a href="#" class="btn-services" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">LOGIN</a>
+				<a href="{% url 'login' %}" class="btn-services">LOGIN</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -58,26 +63,6 @@ Página Inicial | {{ block.super }}
 </div>
 </div>
 
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content loginmodal-container">
-			<h1>
-				Faça login com sua conta
-			</h1>
-			<br>
-			<form action="" method="POST">
-				{% csrf_token %}
-				<input type="text" name="user" placeholder="Username">
-				<a href="#">Esqueci a senha</a>
-				<input type="password" name="pass" placeholder="Password">
-				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
-			</form>
-			<div class="login-help">
-				<a href="#" data-toggle="modal" data-target="#register-modal"> Registrar-se </a>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 
