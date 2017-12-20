@@ -96,9 +96,9 @@ def arte_detalhes(request):
 
 @login_required(login_url='login')
 def gerenciararte(request):
-	artes = Arte.objects.all()
 	id_usuario = request.user
 	usuario = Usuario.objects.get(user=id_usuario)
+	artes = Arte.objects.filter(usuario = usuario)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(artes, 8)
 
