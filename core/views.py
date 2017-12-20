@@ -209,6 +209,7 @@ def finalizarcompra(request):
 			cartao.usuario = usuario
 			cartao.save()
 			return redirect('/gerenciararte')
+	request.session['artes'] = []
 	return render(request, 'finalizarcompra.html', context)
 
 @login_required(login_url='login')
