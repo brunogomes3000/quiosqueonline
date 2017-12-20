@@ -213,7 +213,12 @@ def finalizarcompra(request):
 
 @login_required(login_url='login')
 def editdadospessoais(request):
-	return render(request, 'editdadospessoais.html')
+	id_usuario = request.user
+	usuario = Usuario.objects.get(user=id_usuario)
+	context = {
+		'usuario': usuario,
+	}
+	return render(request, 'editdadospessoais.html', context)
 
 @login_required(login_url='login')
 def editarte(request):
