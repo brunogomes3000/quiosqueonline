@@ -89,7 +89,8 @@ def arte_detalhes(request):
 	id_arte = request.GET.get("id")
 	artes = Arte.objects.get(id = id_arte)
 	context = {
-	'artes': artes
+	'artes': artes,
+	'usuario': usuario
 	}
 	return render(request,'arte_detalhes.html', context)
 

@@ -36,7 +36,7 @@ class Categoria(models.Model):
 class Arte(models.Model):
     descricao = models.CharField("Descrição", max_length=100, blank=True, null=True)
     dataCadastro = models.DateField('Data de cadastro', auto_now_add=True)
-    email = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=True, null=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=True, null=True)
     preco = models.FloatField("Preço", blank=True, null=True)
     imagem_principal = models.ImageField(upload_to='img/imagensArtes/', verbose_name='Imagem da Arte', blank=True, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, blank=True, null=True)
