@@ -200,14 +200,15 @@ def finalizarcompra(request):
 			for artes in lista_artes:
 				nomesArtes = nomesArtes + '\n- ' + artes[1]
 
-			email = usuario.user.email
-			nome = usuario.user.first_name
-			nome2 = usuario.user.last_name
-			mensagem_completa = 'Olá, {0} {1}!\nVocê acaba de adquirir em nosso site os direitos de uso da(s) seguinte(s) arte(s): \n\n{2}\n\nValor total: R$ {3} \n\n\nSe não foi você quem fez essa compra, quem sabe morre'.format(nome, nome2, nomesArtes, vlTotal)
-			send_mail('Confirmação de compra | Quiosque Online', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [email])
 			cartao = form.save(commit=False)
 			cartao.usuario = usuario
 			cartao.save()
+			email = usuario.user.email
+			nome = usuario.user.first_name
+			nome2 = usuario.user.last_name
+			request.session['artes'] = []
+			mensagem_completa = 'Olá, {0} {1}!\nVocê acaba de adquirir em nosso site os direitos de uso da(s) seguinte(s) arte(s): \n\n{2}\n\nValor total: R$ {3} \n\n\nSe não foi você quem fez essa compra, quem sabe morre'.format(nome, nome2, nomesArtes, vlTotal)
+			send_mail('Confirmação de compra | Quiosque Online', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [email])
 			return redirect('/gerenciararte')
 	request.session['artes'] = []
 	return render(request, 'finalizarcompra.html', context)
