@@ -12,19 +12,21 @@ Login | {{ block.super }}
       <div class="col-md-12">
         <h3 class="section-title">Autenticação</h3>
         <div class="section-title-divider"></div>
-        <div class="row mt">
+      </div>
+      <div class="container">
+        <div class="row">
           {% if form.errors %}
-          <div class="alert alert-danger">
+          <div class="col align-self-center alert alert-danger">
             <p> Usuário ou senha inválido. Tente novamente. </p>
           </div>
           {% endif %}
 
           {% if next %}
-          <div class="alert alert-danger">
+          <div class="col align-self-center alert alert-danger">
             {% if user.is_authenticated %}
             <p>Sua conta não tem permissão para acessar esta página. Realize o login com sua conta</p>
             {% else %}
-            <p> Relaize o login para acessar esta página.</p>
+            <p> Realize o login para acessar esta página.</p>
             {% endif %}
           </div>
           {% endif %}
@@ -39,21 +41,19 @@ Login | {{ block.super }}
                   </div>
                   <div class="form-group">
                     <label for="id_password"><b>SENHA</b/label>
-                    <input type="password" class="form-control" name="password" required id="id_password"  placeholder="Digite a senha">
-                  </div>
-                  {% if request.GET.next %}
-                  <input type="hidden" name="next" value="{{ request.GET.next}}"/>
-                  {% endif %}
-                  <button type="submit" class="btn btn-danger">Login</button>
-                </form>
-
+                      <input type="password" class="form-control" name="password" required id="id_password"  placeholder="Digite a senha">
+                    </div>
+                    {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next}}"/>
+                    {% endif %}
+                    <button type="submit" class="btn btn-danger">Login</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-  </div>
-</section>
-{% endblock%}
+  </section>
+  {% endblock%}

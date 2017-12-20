@@ -16,25 +16,28 @@ Editar Arte | {{ block.super }}
         <h3 class="section-title">Editar</h3>
         <div class="section-title-divider"></div>
       </div>
-      <div class="col-md-12">
-        <img class="img-fluid img-thumbnail rounded float-left" src="{{arte.imagem_principal.url}}" alt="{{arte.descricao}}" width="700" hspace="15"/>
-        <form action="{% url 'editarte' %}" method="post" >
-          {% csrf_token %}
-
-          <div class="form-group">
-            <h3><b>Nome</b></h3>
-            <p>{{formEditArte.descricao}}</p>
+        <div class="col-md-7">
+          <img class="img-fluid img-thumbnail rounded float-left" src="{{arte.imagem_principal.url}}" alt="{{arte.descricao}}" width="700" hspace="15"/>
           </div>
-          <div class="form-group">
-            <h3><b>Preço</b></h3>
-            <p>{{formEditArte.preco}}</p>
-          </div>
-          {% if arte.id %}
-          <input type="hidden" name="id" value="{{ arte.id }}" />
-          {% endif %}
-          <p><input type="submit" value="Enviar" /></p>
-        </form>
-      </div>
+          <div class="col-md-3">
+            <form action="{% url 'editarte' %}" method="post" >
+              {% csrf_token %}
+                <h3><b>{{arte.descricao}}</b></h3>
+                <div class="form-group">
+        					<input type="text" class="form-control" name="descricao" maxlength="100" id="id_descricao" placeholder="Novo Nome"/>
+        				</div>
+              <div class="form-group">
+                <h3><b>Preço: R${{arte.preco}}0</b></h3>
+                <div class="form-group">
+        					<input type="number" class="form-control" name="preco" step="any" id="id_preco" placeholder="Novo Preço"/>
+        				</div>
+              </div>
+              {% if arte.id %}
+              <input type="hidden" name="id" value="{{ arte.id }}" />
+              {% endif %}
+              <input class = "btn btn-danger" type="submit" value="Enviar" />
+            </form>
+        </div>
       <div class="col-md-3">
       </div>
     </div>
