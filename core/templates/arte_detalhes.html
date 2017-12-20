@@ -25,7 +25,7 @@ Detalhe da Arte | {{ block.super }}
       </br>
         <h3><b>Nome da Arte:</b></h3><h2>{{ artes.descricao }}</h2>
         <h3><b>Data de Cadastro:</b></h3><h2>{{ artes.dataCadastro }}</h2>
-        <h3><b>Autor:</b></h3><h2>{{ usuario.user.first_name }}</h2>
+        <h3><b>Autor:</b></h3><h2>{{ artes.usuario.user.username }}</h2>
         <h3><b>Preço:</b></h3><h2>R$ {{artes.preco}}0</h2></br>
         <a href="{% url 'carrinho' %}?op=adicionar&id={{artes.id}}"><button type="button" class="btn btn-danger">Adicionar ao Carrinho <i class="fas fa-shopping-cart"></i></button></a>
       </div>
