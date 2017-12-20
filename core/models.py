@@ -16,7 +16,7 @@ class Usuario(models.Model):
 
     def __str__(self):
 
-        return self.cpfCnpj
+        return self.user.first_name
 
     class Meta:
         verbose_name = 'Usuario'

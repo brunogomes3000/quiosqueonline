@@ -13,7 +13,6 @@ Detalhe da Arte | {{ block.super }}
       <div class="col-md-12">
         <h3 class="section-title">Detalhes da arte</h3>
         <div class="section-title-divider"></div>
-        <form class="align-center"></form>
       </div>
     </div>
     <div class="row">
@@ -25,7 +24,7 @@ Detalhe da Arte | {{ block.super }}
       </br>
         <h3><b>Nome da Arte:</b></h3><h2>{{ artes.descricao }}</h2>
         <h3><b>Data de Cadastro:</b></h3><h2>{{ artes.dataCadastro }}</h2>
-        <h3><b>Autor:</b></h3><h2>{{ artes.usuario.user.username }}</h2>
+        <h3><b>Autor:</b></h3><h2>{{ artes.usuario.user.first_name }}</h2>
         <h3><b>Preço:</b></h3><h2>R$ {{artes.preco}}0</h2></br>
         <a href="{% url 'carrinho' %}?op=adicionar&id={{artes.id}}"><button type="button" class="btn btn-danger">Adicionar ao Carrinho <i class="fas fa-shopping-cart"></i></button></a>
       </div>
