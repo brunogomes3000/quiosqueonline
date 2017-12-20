@@ -259,7 +259,12 @@ def enviarArte(request):
 
 @login_required(login_url='login')
 def usuario (request):
-	return render(request, 'usuario.html')
+	id_usuario = request.user
+	usuario = Usuario.objects.get(user=id_usuario)
+	context = {
+		'usuario': usuario,
+	}
+	return render(request, 'usuario.html', context)
 
 def sobre(request):
 	return render( request, 'sobre.html')
