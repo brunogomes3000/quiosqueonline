@@ -6,36 +6,54 @@ Login | {{ block.super }}
 {% endblock %}
 
 {% block conteudo %}
-<h1 class="centered">Autenticação</h1><br />
-<hr/>
-<div class="container">
-  <div class="row mt">
+<section id="portfolio">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">Autenticação</h3>
+        <div class="section-title-divider"></div>
+        <div class="row mt">
+          {% if form.errors %}
+          <div class="alert alert-danger">
+            <p> Usuário ou senha inválido. Tente novamente. </p>
+          </div>
+          {% endif %}
 
-    {% if form.errors %}
-    <div class="alert alert-danger">
-      <p> Usuário ou senha inválido. Tente novamente. </p>
+          {% if next %}
+          <div class="alert alert-danger">
+            {% if user.is_authenticated %}
+            <p>Sua conta não tem permissão para acessar esta página. Realize o login com sua conta</p>
+            {% else %}
+            <p> Relaize o login para acessar esta página.</p>
+            {% endif %}
+          </div>
+          {% endif %}
+          <div class="col-md-12" align="center">
+            <div class=" card w-25" >
+              <div class="card-body">
+                <form action="{% url 'login' %}"  method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="id_username"><b>USUÁRIO</b></label>
+                    <input type="text" class="form-control" name="username" required id="id_username"  placeholder="Digite o usuário">
+                  </div>
+                  <div class="form-group">
+                    <label for="id_password"><b>SENHA</b/label>
+                    <input type="password" class="form-control" name="password" required id="id_password"  placeholder="Digite a senha">
+                  </div>
+                  {% if request.GET.next %}
+                  <input type="hidden" name="next" value="{{ request.GET.next}}"/>
+                  {% endif %}
+                  <button type="submit" class="btn btn-danger">Login</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-    {% endif %}
-
-{% if next %}
-<div class="alert alert-danger">
-{% if user.is_authenticated %}
-<p>Sua conta não tem permissão para acessar esta página. Realize o login com sua conta</p>
-{% else %}
-<p> Relaize o login para acessar esta página.</p>
-{% endif %}
-</div>
-{% endif %}
-    <form action="{% url 'login' %}"  method="post">
-      {% csrf_token %}
-      <p>{{form.username.label}}: {{ form.username}}</p>
-      <p>{{form.password.label}}: {{ form.password}}</p>
-      {% if request.GET.next %}
-      <input type="hidden" name="next" value="{{ request.GET.next}}"/>
-      {% endif %}
-
-      <p><input type="submit" value="Enviar" /></p>
-    </form>
   </div>
-</div>
+</section>
 {% endblock%}
