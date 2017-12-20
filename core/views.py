@@ -203,12 +203,12 @@ def finalizarcompra(request):
 			email = usuario.user.email
 			nome = usuario.user.first_name
 			nome2 = usuario.user.last_name
-			mensagem_completa = 'Olá, {0} {1}!\nVocê acaba de adquirir em nosso site os direitos de uso da(s) seguinte(s) arte(s): \n\n{2}\n\nValor total: R$ {3} \n\n\nSe não foi você quem fez essa compra, quem sabe morre'.format(nome, nome2, nomesArtes, vlTotal) 
+			mensagem_completa = 'Olá, {0} {1}!\nVocê acaba de adquirir em nosso site os direitos de uso da(s) seguinte(s) arte(s): \n\n{2}\n\nValor total: R$ {3} \n\n\nSe não foi você quem fez essa compra, quem sabe morre'.format(nome, nome2, nomesArtes, vlTotal)
 			send_mail('Confirmação de compra | Quiosque Online', mensagem_completa, settings.DEFAULT_FROM_EMAIL, [email])
 			cartao = form.save(commit=False)
 			cartao.usuario = usuario
 			cartao.save()
-			return redirect('/gerenciararte')			
+			return redirect('/gerenciararte')
 	return render(request, 'finalizarcompra.html', context)
 
 @login_required(login_url='login')
@@ -236,6 +236,7 @@ def editarte(request):
 
 @login_required(login_url='login')
 def enviarArte(request):
+	categorias = Categoria.objects.all()
 	id_usuario = request.user
 	usuario = Usuario.objects.get(user=id_usuario)
 
@@ -250,6 +251,7 @@ def enviarArte(request):
 	formArte = ArteModelForm()
 	context = {
 		'formArte' : formArte,
+		'categorias' : categorias
 
 	}
 	return render( request, 'enviarArte.html', context)

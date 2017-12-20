@@ -25,19 +25,29 @@ Enviar Arte | {{ block.super }}
 			</div>
 			{% endif %}
 			{% endfor %}
-
-
 			<form action="{% url 'enviarArte' %}" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
-
-				<h4><b>Nome da arte</b></h4>
-				<p>{{formArte.descricao}}</p>
-				<h4><b>{{formArte.preco.label}}</b></h4>
-				<p>{{formArte.preco}}</p>
-				<h4><b>{{formArte.imagem_principal.label}}</b></h4>
-				<p>{{formArte.imagem_principal}}</p>
-				<h4><b>{{formArte.categoria.label}}</b></h4>
-				<p>{{formArte.categoria}}</p>
+				<div class="form-group">
+					<label for="id_descricao"><b>NOME DA ARTE</b></label>
+					<input type="text" class="form-control" name="descricao" id="id_descricao" maxlength="100" placeholder="Nome da arte">
+				</div>
+				<div class="form-group">
+					<label for="id_preco"><b>VALOR</b></label>
+					<input type="number" class="form-control" name="preco" id="id_preco" step="any" placeholder="Valor da arte">
+				</div>
+				<div class="form-group">
+					<label for="id_imagem_principal"><b>ARQUIVO DA IMAGEM</b></label>
+					<input type="file" class="form-control-file" name="imagem_principal" id="id_imagem_principal" placeholder="Valor da arte">
+				</div>
+				<div class="form-group">
+					<label for="id_categoria"><b>CATEGORIA DA IMAGEM</b></label>
+					<select class="form-control" name="categoria" id="id_categoria">
+						<option value="">Escolha uma categoria</option>
+						{% for cat in categorias %}
+						<option value="{{cat.id}}">{{cat.categoria}}</option>
+						{% endfor %}
+					</select>
+				</div>
 				<input class = "btn btn-danger" type="submit" value="Enviar" />
 			</form>
 
