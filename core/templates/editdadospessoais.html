@@ -20,19 +20,38 @@ Detalhe da Arte | {{ block.super }}
         <div class="row">
             <div class="col-md-4"></div> <!--Utilizado para centralizar a segunda DIV-->
             <div class="col-md-4">
-                <form>
+                <form action="{% url 'editdadospessoais' %}" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <label class="col-form-label" for="formGroupExampleInput" desable><span>Nome</span></label><br>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.nome }}">
+                        <label for="id_first_name"><b>Nome</b></label>
+                        <input type="text" class="form-control" name="first_name" maxlength="30" id="id_first_name" autofocus placeholder="{{ user.first_name }}" />
                     </div>
                     <div class="form-group">
-                        <label class="col-form-label" for="formGroupExampleInput" desable><span>Email</span></label><br>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ usuario.email }}">
+                        <label for="id_last_name"><b>Sobrenome</b></label>
+                        <input type="text" class="form-control" name="last_name" maxlength="30" id="id_last_name" placeholder="{{ user.last_name }}"/>
                     </div>
                     <div class="form-group">
-                        <p align="right"><a href="{% url 'finalizarcompra' %}" class="btn btn-outline-danger" role="button" aria-pressed="true"> Salvar </a></p>
+                        <label for="id_email"><b>Email</b></label>
+                        <input type="email" class="form-control" name="email" maxlength="254" id="id_email" placeholder="{{ user.email }}"/>
                     </div>
-                </form>       
+                    <div class="form-group">
+                        <label for="id_cpfCnpj"><b>CPF</b></label>
+                        <input type="text" class="form-control" name="cpfCnpj" maxlength="11" id="id_cpfCnpj" required placeholder="{{ usuario.cpfCnpj }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_username"><b>Usuário</b></label>
+                        <input type="text" class="form-control" name="username" maxlength="150" id="id_username" required placeholder="{{ user }}"/>
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="id_password1"><b>Senha</b></label>
+                        <input type="password" class="form-control" name="password1" id="id_password1" required placeholder="Senha"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password2"><b>Confirmar Senha</b></label>
+                        <input type="password" class="form-control" name="password2" id="id_password2" required placeholder="Confirmar Senha"/>
+                    </div>-->
+                    <p align="right"><a href="#" role="button" aria-pressed="true"><input type="submit" name="registro" class="btn btn-outline-danger" value="Salvar alterações"></a></p>
+                </form>      
             </div>
             <div class="col-md-4"></div><!--Utilizado para centralizar a segunda DIV-->
         </div>
